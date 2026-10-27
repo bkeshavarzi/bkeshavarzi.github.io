@@ -1,0 +1,825 @@
+{
+  "updatedAt": "2026-10-27T12:25:00-04:00",
+  "updatedLabel": "Tue, Oct 27 · 12:25 p.m. ET",
+  "refreshNote": "Refreshed every 3 to 4 hours",
+  "disclaimer": "These notes are for learning. They are research ideas, not financial advice.",
+  "markets": [
+    {
+      "name": "S&P 500",
+      "value": "7,676.77",
+      "changePct": 0.7,
+      "asOf": "Mon close"
+    },
+    {
+      "name": "Dow Jones",
+      "value": "52,361.58",
+      "changePct": 0.28,
+      "asOf": "Mon close"
+    },
+    {
+      "name": "Nasdaq Composite",
+      "value": "26,169.38",
+      "changePct": 0.82,
+      "asOf": "Mon close"
+    },
+    {
+      "name": "Oil (WTI), $ a barrel",
+      "value": "103.23",
+      "changePct": 3.8,
+      "asOf": "Fri close"
+    },
+    {
+      "name": "10-year Treasury yield",
+      "value": "5.00%",
+      "changePct": null,
+      "asOf": "Fri close"
+    }
+  ],
+  "quotes": {
+    "NVDA": {
+      "name": "Nvidia",
+      "price": null,
+      "changePct": 2.39,
+      "asOf": "Mon close"
+    },
+    "TSLA": {
+      "name": "Tesla",
+      "price": null,
+      "changePct": 5.21,
+      "asOf": "Mon close"
+    },
+    "GOOGL": {
+      "name": "Alphabet (Google)",
+      "price": null,
+      "changePct": -1.06,
+      "asOf": "Mon close"
+    },
+    "META": {
+      "name": "Meta Platforms",
+      "price": null,
+      "changePct": -1.88,
+      "asOf": "Mon close"
+    },
+    "AMD": {
+      "name": "Advanced Micro Devices",
+      "price": null,
+      "changePct": 2.8,
+      "asOf": "Mon close"
+    },
+    "MU": {
+      "name": "Micron Technology",
+      "price": null,
+      "changePct": 2.98,
+      "asOf": "Mon close"
+    },
+    "AVGO": {
+      "name": "Broadcom",
+      "price": null,
+      "changePct": 2.33,
+      "asOf": "Mon close"
+    },
+    "INTC": {
+      "name": "Intel",
+      "price": null,
+      "changePct": 4.04,
+      "asOf": "Mon close"
+    },
+    "NFLX": {
+      "name": "Netflix",
+      "price": null,
+      "changePct": -2.96,
+      "asOf": "Mon close"
+    },
+    "VZ": {
+      "name": "Verizon",
+      "price": null,
+      "changePct": -3.49,
+      "asOf": "Mon close"
+    },
+    "CDNS": {
+      "name": "Cadence Design Systems",
+      "price": null,
+      "changePct": 1.79,
+      "asOf": "Mon close"
+    },
+    "CCI": {
+      "name": "Crown Castle",
+      "price": 86.22,
+      "changePct": 9.37,
+      "asOf": "Fri close"
+    },
+    "AMT": {
+      "name": "American Tower",
+      "price": 186.91,
+      "changePct": 2.94,
+      "asOf": "Fri close"
+    },
+    "PANW": {
+      "name": "Palo Alto Networks",
+      "price": 380.55,
+      "changePct": 7.22,
+      "asOf": "Fri close"
+    },
+    "RNG": {
+      "name": "RingCentral",
+      "price": 83.39,
+      "changePct": 5.0,
+      "asOf": "Fri close"
+    },
+    "MRNA": {
+      "name": "Moderna",
+      "price": 200.1,
+      "changePct": -1.25,
+      "asOf": "Fri close"
+    },
+    "ELAN": {
+      "name": "Elanco",
+      "price": 22.52,
+      "changePct": -0.75,
+      "asOf": "Fri close"
+    },
+    "SOLV": {
+      "name": "Solventum",
+      "price": 85.41,
+      "changePct": -2.33,
+      "asOf": "Fri close"
+    },
+    "SGRY": {
+      "name": "Surgery Partners",
+      "price": null,
+      "changePct": 47.62,
+      "asOf": "Mon close"
+    },
+    "MSFT": {
+      "name": "Microsoft",
+      "price": null,
+      "changePct": null,
+      "asOf": ""
+    },
+    "AMZN": {
+      "name": "Amazon",
+      "price": null,
+      "changePct": null,
+      "asOf": ""
+    },
+    "AAPL": {
+      "name": "Apple",
+      "price": null,
+      "changePct": null,
+      "asOf": ""
+    }
+  },
+  "keyStocks": [
+    "NVDA",
+    "MSFT",
+    "GOOGL",
+    "AMZN",
+    "AAPL",
+    "META",
+    "TSLA",
+    "AMD",
+    "MU"
+  ],
+  "week": [
+    {
+      "when": "Tue, Oct 27 (today)",
+      "what": "Fed meeting, day 1. After the close: Visa, Robinhood, Seagate, NXP Semiconductors and Teradyne report earnings."
+    },
+    {
+      "when": "Wed, Oct 28",
+      "what": "Federal Reserve interest-rate decision and press conference. Alphabet and Microsoft report earnings after the close."
+    },
+    {
+      "when": "Thu, Oct 29",
+      "what": "Amazon reports earnings."
+    },
+    {
+      "when": "November",
+      "what": "Acumen Pharmaceuticals shares are up 6.6% before the open today, ahead of its Alzheimer's trial results due in November."
+    }
+  ],
+  "lesson": {
+    "title": "Lesson of the day: read the outlook first",
+    "body": "Celestica fell 5% on Monday and then jumped about 17% before the open today. The reason was its outlook, not the past quarter. A company's own forecast is called guidance, and a share price is a bet on the future. When the forecast beats what analysts expected, the stock can jump even if nothing else changed."
+  },
+  "stories": [
+    {
+      "id": "memory-chips",
+      "section": "today",
+      "tag": "AI and chips",
+      "time": "Tue, before the open",
+      "confidence": "Likely",
+      "headline": "Memory-chip stocks edge up after Anthropic files for an IPO",
+      "news": "Before the market opened, SK Hynix rose 2.67%, Micron 1.72% and SanDisk 1.05%. This morning's briefing links the move to Anthropic's filing for an initial public offering (IPO) and to tight supply of memory chips, but treats that link as likely, not confirmed. Nvidia (down 0.53%) and Meta (down 0.36%) were slightly lower.",
+      "history": "Anthropic builds artificial intelligence (AI) models. Reports in June said it had privately filed with the US Securities and Exchange Commission (SEC) after raising $65 billion at a $965 billion valuation. An IPO is when a private company sells shares to the public for the first time. AI companies need huge numbers of chips, and memory chips, which store data, are a big part of every AI data center.",
+      "says": "Traders are guessing that a successful IPO would give Anthropic, and other AI companies, more money to buy computing equipment. More spending on that equipment would mean more demand for memory chips, so memory-chip companies rose a little.",
+      "impact": "If AI companies keep spending, memory-chip makers may keep getting orders. But today's moves are small, prices before the open come from thin trading and often fade, and an IPO can still be delayed or priced lower than hoped. Treat this as a guess about demand, not a result.",
+      "terms": [
+        [
+          "Initial public offering (IPO)",
+          "The first time a private company sells its shares to the public."
+        ],
+        [
+          "Premarket",
+          "Trading that happens before the regular session opens at 9:30 a.m. Eastern. Few people trade, so prices can jump around."
+        ],
+        [
+          "Securities and Exchange Commission (SEC)",
+          "The US regulator that oversees stock markets and public companies."
+        ],
+        [
+          "Valuation",
+          "What investors think a whole company is worth."
+        ],
+        [
+          "Memory chip",
+          "A chip that stores data. AI computers need a lot of them."
+        ]
+      ],
+      "chart": {
+        "type": "bars",
+        "title": "Change before the open, Tuesday Oct 27",
+        "items": [
+          {
+            "label": "SK Hynix",
+            "value": 2.67
+          },
+          {
+            "label": "Micron",
+            "value": 1.72
+          },
+          {
+            "label": "SanDisk",
+            "value": 1.05
+          },
+          {
+            "label": "Tesla",
+            "value": 1.0
+          },
+          {
+            "label": "Meta",
+            "value": -0.36
+          },
+          {
+            "label": "Nvidia",
+            "value": -0.53
+          }
+        ],
+        "signed": true,
+        "decimals": 2,
+        "suffix": "%",
+        "toneBySign": true,
+        "note": "Source: this morning's briefing, snapshot at 5:17 a.m. ET. Figures move fast."
+      },
+      "sources": [
+        {
+          "title": "Anthropic confidentially files for US IPO (Let's Data Science)",
+          "url": "https://letsdatascience.com/news/anthropic-confidentially-files-for-us-ipo-8ee96a8e"
+        },
+        {
+          "title": "Anthropic files confidentially for IPO (Fox Business)",
+          "url": "https://foxbusiness.com/markets/anthropic-files-confidentially-ipo"
+        }
+      ]
+    },
+    {
+      "id": "celestica",
+      "section": "today",
+      "tag": "Earnings",
+      "time": "Tue, before the open",
+      "confidence": "Confirmed",
+      "headline": "Celestica jumps 16.8% before the open on a $40 billion sales target for 2027",
+      "news": "Celestica, a company that makes hardware used in data centers, rose 16.8% before the open after a third-quarter beat and a $40 billion revenue outlook for 2027. The stock had fallen 5% on Monday.",
+      "history": "In July, an analyst at TD Cowen said Celestica's 2027 growth targets showed AI demand could last for years. He estimated that even the low end of the target meant about $33.8 billion of 2027 sales, compared with about $27.1 billion that Wall Street analysts expected at the time. The stock rose 3.2% that day, to C$464.",
+      "says": "Today's $40 billion target is higher than both of those numbers. A company's own forecast is called guidance, and share prices move on the future more than on the quarter just finished.",
+      "impact": "A higher target raises hopes that AI spending will keep growing, which can help other companies that supply data centers. But the bar is now higher: if sales come in below $40 billion, the stock can fall. Also, jumps before the open do not always last (see RingCentral below).",
+      "terms": [
+        [
+          "Premarket",
+          "Trading before the regular session. Few people trade, so prices can swing."
+        ],
+        [
+          "Guidance",
+          "A company's own forecast of its future sales or profit."
+        ],
+        [
+          "Consensus",
+          "The average guess of Wall Street analysts."
+        ],
+        [
+          "Revenue",
+          "Total sales, before costs are taken out."
+        ],
+        [
+          "C$",
+          "Canadian dollars. Celestica also trades in Toronto."
+        ]
+      ],
+      "chart": {
+        "type": "bars",
+        "title": "Celestica 2027 sales, in billions of dollars",
+        "items": [
+          {
+            "label": "Wall Street guess (July)",
+            "value": 27.1,
+            "tone": "muted"
+          },
+          {
+            "label": "Low end of target, estimated (July)",
+            "value": 33.8,
+            "tone": "muted"
+          },
+          {
+            "label": "New 2027 target (Oct 27)",
+            "value": 40,
+            "tone": "accent"
+          }
+        ],
+        "prefix": "$",
+        "suffix": "B",
+        "decimals": 1,
+        "note": "July figures are from analyst TD Cowen via Dow Jones. The $40 billion target is from this morning's briefing."
+      },
+      "sources": [
+        {
+          "title": "Celestica's Multi-Year AI Roadmap Offers Confidence (Dow Jones via Tiger Brokers)",
+          "url": "https://www.itiger.com/news/2654773885"
+        },
+        {
+          "title": "Celestica on Yahoo Finance (live page)",
+          "url": "https://finance.yahoo.com/quote/CLS/"
+        }
+      ]
+    },
+    {
+      "id": "meta-offering",
+      "section": "today",
+      "tag": "Big Tech",
+      "time": "Tue, before the open",
+      "confidence": "Confirmed",
+      "headline": "Meta's stock sale grows to $97.5 billion, and Nvidia will put in $3 billion",
+      "news": "Nvidia will invest $3 billion in Meta's enlarged stock offering of $97.5 billion, according to this morning's briefing. Meta shares were down about 0.36% before the open, after falling 1.88% on Monday.",
+      "history": "On October 20, the talk was of an offering of up to $30 billion. Meta has spent heavily on AI buildings and chips. It planned $130 to $145 billion of capital spending for 2026, and its free cash flow in the second quarter was $784 million, down from $8.55 billion a year earlier. Alphabet, Google's parent company, raised about $84.75 billion by selling shares in June.",
+      "says": "An equity offering means a company sells new shares to raise cash. Meta chose shares over borrowing more money, and this sale is more than three times the amount analysts were discussing last week.",
+      "impact": "Selling more shares means each existing share owns a smaller slice of the company, called dilution, which can push the price down. On the other side, Meta avoids more debt and gets cash for its AI plans. Nvidia sells chips to Meta and is now also buying Meta shares, an arrangement some investors will watch closely. Alphabet, Microsoft and Amazon report earnings this week, so more detail on AI spending is coming.",
+      "terms": [
+        [
+          "Equity offering",
+          "A company sells new shares to raise money."
+        ],
+        [
+          "Dilution",
+          "When new shares are created, each existing share represents a smaller part of the company."
+        ],
+        [
+          "Capital spending",
+          "Money spent on buildings and equipment, such as data centers and chips."
+        ],
+        [
+          "Free cash flow",
+          "Cash left after paying costs and capital spending."
+        ]
+      ],
+      "chart": {
+        "type": "bars",
+        "title": "Size of stock sales, in billions of dollars",
+        "items": [
+          {
+            "label": "What analysts discussed (Oct 20)",
+            "value": 30,
+            "tone": "muted"
+          },
+          {
+            "label": "Alphabet's offering (June)",
+            "value": 84.75,
+            "tone": "muted"
+          },
+          {
+            "label": "Meta's offering now",
+            "value": 97.5,
+            "tone": "accent"
+          }
+        ],
+        "prefix": "$",
+        "suffix": "B",
+        "decimals": 2,
+        "trimZeros": true,
+        "note": "Sources: 24/7 Wall St. (Oct 20) and this morning's briefing."
+      },
+      "sources": [
+        {
+          "title": "AI chip stocks bounce back as hyperscaler earnings loom, Meta equity raise in focus (24/7 Wall St.)",
+          "url": "https://247wallst.com/investing/2026/10/20/ai-chip-stocks-bounce-back-as-hyperscaler-earnings-loom-meta-equity-raise-in-focus/"
+        },
+        {
+          "title": "Meta Platforms on Yahoo Finance (live page)",
+          "url": "https://finance.yahoo.com/quote/META/"
+        }
+      ]
+    },
+    {
+      "id": "fed-meeting",
+      "section": "today",
+      "tag": "Economy",
+      "time": "Tue, decision Wed",
+      "confidence": "Confirmed",
+      "headline": "The Federal Reserve starts a two-day meeting; the decision comes Wednesday",
+      "news": "The Federal Reserve (the Fed) begins a two-day meeting today and announces its decision on Wednesday, October 28. Markets widely expect it to leave its main interest rate unchanged at 3.75% to 4.00%. With oil above $100 a barrel, the press conference after the decision may matter as much as the decision itself.",
+      "history": "The Fed sets a target for the interest rate that banks charge each other for overnight loans. That rate influences loans, credit cards and savings accounts. The Fed raised it sharply in 2022 and 2023 to slow high inflation, which means prices rising too fast. It uses higher rates to cool prices and lower rates to help growth.",
+      "says": "Holding means no change this week. The 10-year Treasury yield, the interest rate on US government 10-year bonds, closed at 5.00% on Friday, above the Fed's own range. That tells you investors are asking for more interest to lend money for long periods.",
+      "impact": "If the Fed sounds worried about prices because of oil, traders may expect rates to stay high for longer, which usually pressures stocks, especially expensive tech stocks. If it sounds calm, stocks may relax. Alphabet and Microsoft report earnings right after the close on Wednesday, so a lot lands on the same day.",
+      "terms": [
+        [
+          "Federal Reserve (the Fed)",
+          "The US central bank. It sets the main interest rate."
+        ],
+        [
+          "Interest rate",
+          "The price of borrowing money, shown as a percent per year."
+        ],
+        [
+          "Inflation",
+          "How fast prices are rising across the economy."
+        ],
+        [
+          "Treasury yield",
+          "The interest rate the US government pays to borrow. The 10-year yield is the one for 10-year bonds."
+        ]
+      ],
+      "chart": {
+        "type": "bars",
+        "title": "Two rates compared, in percent",
+        "items": [
+          {
+            "label": "Fed target range, top end",
+            "value": 4.0,
+            "tone": "muted"
+          },
+          {
+            "label": "10-year Treasury yield (Fri Oct 23)",
+            "value": 5.0,
+            "tone": "accent"
+          }
+        ],
+        "suffix": "%",
+        "decimals": 2,
+        "note": "These bars show levels, not changes. Source: your Oct 23 digest."
+      },
+      "sources": [
+        {
+          "title": "Federal Reserve RSS feeds and press releases",
+          "url": "https://federalreserve.gov/feeds"
+        }
+      ]
+    },
+    {
+      "id": "oil",
+      "section": "today",
+      "tag": "Oil",
+      "time": "Fri Oct 23 close",
+      "confidence": "Confirmed",
+      "headline": "Oil is back above $100 a barrel as US-Iran fears return",
+      "news": "On Friday, October 23, US crude oil, called West Texas Intermediate (WTI), rose 3.8% to $103.23 a barrel on fears of renewed fighting between the US and Iran. Brent crude, the international benchmark, rose 3.1% to $116.72.",
+      "history": "Oil jumped in March when the US-Iran war began and ships were disrupted in the Strait of Hormuz, a narrow sea route that carries much of the world's oil. WTI reached about $107 in late April, then fell below $70 by June 24 as talks moved forward and tankers sailed again. The sources we have do not cover July to September. Today's price is back near the spring highs.",
+      "says": "A conflict near key oil routes makes traders worry that less oil will reach buyers, so prices can rise fast even before any oil is actually lost.",
+      "impact": "Higher oil raises gasoline and shipping costs, which can push inflation up and make the Fed less willing to cut rates. Airlines and other big fuel users usually suffer, while oil producers can gain. Prices can also reverse quickly on peace news, as they did in April.",
+      "terms": [
+        [
+          "West Texas Intermediate (WTI)",
+          "The main US oil price."
+        ],
+        [
+          "Brent",
+          "The main international oil price, used for oil from the North Sea and much of the world."
+        ],
+        [
+          "Barrel",
+          "The unit oil is priced in. One barrel is 42 US gallons."
+        ],
+        [
+          "Strait of Hormuz",
+          "A narrow waterway between Iran and Oman. A large share of the world's oil ships through it."
+        ],
+        [
+          "Benchmark",
+          "A standard price others are compared with."
+        ]
+      ],
+      "chart": {
+        "type": "line",
+        "title": "WTI crude oil, dollars a barrel",
+        "labels": [
+          "Jan 9",
+          "Feb 5",
+          "Mar 4",
+          "Mar 20",
+          "Apr 8",
+          "Apr 29",
+          "May 27",
+          "Jun 24",
+          "Oct 23"
+        ],
+        "values": [
+          59.12,
+          63.29,
+          74.66,
+          98.32,
+          94.43,
+          106.88,
+          88.68,
+          69.63,
+          103.23
+        ],
+        "dashedFrom": 7,
+        "prefix": "$",
+        "decimals": 0,
+        "events": [
+          "March: the US-Iran war begins and the Strait of Hormuz is disrupted.",
+          "April 8: a cease-fire is announced and oil has its biggest one-day drop since April 2020.",
+          "April 29: the US says it will keep blocking Iran until there is a deal. WTI is about $107.",
+          "June 24: WTI closes below $70 for the first time since March 2 as tankers pass through Hormuz.",
+          "October 23: fears of renewed fighting send WTI back above $100."
+        ],
+        "note": "The dashed line means we have no price data for July to September. Sources: Wikipedia oil market chronology (through June 24) and your Oct 23 digest."
+      },
+      "sources": [
+        {
+          "title": "2026–2028 world oil market chronology (Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/2026%E2%80%932028_world_oil_market_chronology"
+        }
+      ]
+    },
+    {
+      "id": "monday-recap",
+      "section": "today",
+      "tag": "Market recap",
+      "time": "Mon Oct 26 close",
+      "confidence": "Confirmed",
+      "headline": "Monday: stocks climb led by tech, and Surgery Partners soars on a buyout",
+      "news": "The S&P 500 rose 0.70% to 7,676.77, the Dow Jones Industrial Average rose 0.28% to 52,361.58 and the Nasdaq Composite rose 0.82% to 26,169.38. Surgery Partners jumped 47.62% on a confirmed $5.7 billion deal to take it private at $23.50 a share. Verizon fell 3.49% after revenue missed expectations despite a profit beat. Cadence Design Systems reported after the close, beat expectations and raised its 2026 outlook to 21% growth.",
+      "history": "Stock index futures are bets on where the market will open. Monday morning's bets were mild, between +0.25% and +0.49%. The S&P 500 and the Nasdaq 100 ended well above them, while the Dow ended below.",
+      "says": "A take-private deal means a buyer pays cash for all the shares and the company stops trading publicly, so the stock jumps close to the offer price, here $23.50. Verizon shows that a company can beat on profit and still fall if sales, called revenue, disappoint.",
+      "impact": "A strong Monday before big earnings and the Fed shows investors are cautiously optimistic. Surprises from Alphabet, Microsoft and Amazon this week could change that quickly.",
+      "terms": [
+        [
+          "Index",
+          "A basket of stocks used to measure the market. The S&P 500 holds 500 large US companies."
+        ],
+        [
+          "Futures",
+          "Contracts that let traders bet on where an index will be. Their morning price hints at the market's open."
+        ],
+        [
+          "Take-private deal",
+          "A buyer purchases all of a public company's shares so it no longer trades on the stock market."
+        ],
+        [
+          "Revenue and profit",
+          "Revenue is total sales. Profit is what is left after costs."
+        ]
+      ],
+      "chart": {
+        "type": "grouped",
+        "title": "Monday: morning futures versus the close, percent change",
+        "items": [
+          {
+            "label": "Dow",
+            "values": [
+              0.49,
+              0.28
+            ]
+          },
+          {
+            "label": "S&P 500",
+            "values": [
+              0.3,
+              0.7
+            ]
+          },
+          {
+            "label": "Nasdaq 100",
+            "values": [
+              0.25,
+              1.09
+            ]
+          }
+        ],
+        "series": [
+          "Futures (morning)",
+          "Close"
+        ],
+        "signed": true,
+        "decimals": 2,
+        "suffix": "%",
+        "note": "Source: your Oct 26 after-close digest."
+      },
+      "sources": [
+        {
+          "title": "S&P 500 on Yahoo Finance (live page)",
+          "url": "https://finance.yahoo.com/quote/%5EGSPC/"
+        },
+        {
+          "title": "Dow Jones on Yahoo Finance (live page)",
+          "url": "https://finance.yahoo.com/quote/%5EDJI/"
+        },
+        {
+          "title": "Nasdaq Composite on Yahoo Finance (live page)",
+          "url": "https://finance.yahoo.com/quote/%5EIXIC/"
+        },
+        {
+          "title": "Surgery Partners on Yahoo Finance (live page)",
+          "url": "https://finance.yahoo.com/quote/SGRY/"
+        },
+        {
+          "title": "Verizon on Yahoo Finance (live page)",
+          "url": "https://finance.yahoo.com/quote/VZ/"
+        }
+      ]
+    },
+    {
+      "id": "ringcentral",
+      "section": "earlier",
+      "tag": "Earnings",
+      "time": "Fri Oct 23",
+      "confidence": "Confirmed",
+      "headline": "RingCentral's good quarter faded from +15.7% to +5.0% by the close",
+      "news": "RingCentral reported third-quarter revenue of $676 million, up 5.9% from a year earlier, and adjusted earnings of $1.33 a share versus $1.27 expected. It raised its full-year free cash flow forecast to about $625 million. The stock jumped 15.7% before the open, opened at $90.98, hit $98.14, then sold off all day to close at $83.39, up 5.0%.",
+      "history": "Earnings season is when companies report their results every three months. Stocks often move a lot before the open, when few people are trading.",
+      "says": "The results were genuinely good, yet the price gave back most of its early gains. Much of the good news was already in the price after the early jump.",
+      "impact": "A lesson for beginners: chasing a big jump before the open can lose money by the close. A price reacts to the surprise, which is the result compared with what was expected, not just to whether the result was good.",
+      "terms": [
+        [
+          "Adjusted earnings per share (EPS)",
+          "Profit per share, leaving out one-time items."
+        ],
+        [
+          "Free cash flow",
+          "Cash left after operating costs and capital spending."
+        ],
+        [
+          "Premarket",
+          "Trading before the regular session opens."
+        ]
+      ],
+      "chart": {
+        "type": "line",
+        "title": "RingCentral price on Friday Oct 23, dollars a share",
+        "labels": [
+          "Prior close",
+          "Open",
+          "Day high",
+          "Close"
+        ],
+        "values": [
+          79.42,
+          90.98,
+          98.14,
+          83.39
+        ],
+        "prefix": "$",
+        "decimals": 2,
+        "note": "The prior close is calculated from the 5.0% gain to $83.39. The points are in order, not drawn to a time scale."
+      },
+      "sources": [
+        {
+          "title": "RingCentral third-quarter results, Form 8-K exhibit (SEC)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0001384905/000138490526000058/rng-20260930x8kxex991.htm"
+        },
+        {
+          "title": "RingCentral on Yahoo Finance (live page)",
+          "url": "https://finance.yahoo.com/quote/RNG/"
+        }
+      ]
+    },
+    {
+      "id": "spacex-towers",
+      "section": "earlier",
+      "tag": "Telecom",
+      "time": "Fri Oct 23",
+      "confidence": "Confirmed",
+      "headline": "Reports of a SpaceX phone network lift tower owners and hit the carriers",
+      "news": "Bloomberg reported that SpaceX is in talks to lease at least 80,000 cell towers from Crown Castle to build a fourth nationwide wireless carrier. On Friday Crown Castle jumped 9.4% to $86.22, American Tower rose 2.9% and SBA Communications 2.2%. AT&T fell 5.6% to a three-month low, T-Mobile 5% and Verizon 1.6%.",
+      "history": "US wireless has been a three-company business for years. A few weeks ago SpaceX bought low-band wireless spectrum, and AT&T and Verizon had their worst one-day drops in more than two decades.",
+      "says": "Tower companies own the towers that carriers rent. A new carrier would need towers, so tower owners could gain, while the carriers could lose customers or have to cut prices.",
+      "impact": "Bernstein said the real competition may be years away, but fear alone can weigh on carrier stocks for a long time. Talks may also never turn into a deal.",
+      "terms": [
+        [
+          "Carrier",
+          "A company that sells mobile phone service, like AT&T, Verizon or T-Mobile."
+        ],
+        [
+          "Spectrum",
+          "The radio frequencies that wireless signals travel on."
+        ],
+        [
+          "Lease",
+          "A rental agreement."
+        ]
+      ],
+      "chart": {
+        "type": "bars",
+        "title": "Friday Oct 23 change at the close",
+        "items": [
+          {
+            "label": "Crown Castle",
+            "value": 9.37
+          },
+          {
+            "label": "American Tower",
+            "value": 2.94
+          },
+          {
+            "label": "SBA Communications",
+            "value": 2.15
+          },
+          {
+            "label": "Verizon",
+            "value": -1.6
+          },
+          {
+            "label": "T-Mobile",
+            "value": -5.0
+          },
+          {
+            "label": "AT&T",
+            "value": -5.6
+          }
+        ],
+        "signed": true,
+        "decimals": 2,
+        "suffix": "%",
+        "toneBySign": true,
+        "note": "Source: your Oct 23 digest, citing Bloomberg and Reuters."
+      },
+      "sources": [
+        {
+          "title": "SpaceX seeks access to 80K cell sites, Bloomberg reports (Star-Advertiser)",
+          "url": "https://www.staradvertiser.com/2026/10/22/breaking-news/spacex-seeks-access-to-80k-cell-sites-for-wireless-network-bloomberg-reports/"
+        },
+        {
+          "title": "AT&T, T-Mobile, and Verizon tumble after rumored SpaceX move (PhoneArena)",
+          "url": "https://www.phonearena.com/news/spacex-80000-cell-sites_id184246"
+        },
+        {
+          "title": "Crown Castle on Yahoo Finance (live page)",
+          "url": "https://finance.yahoo.com/quote/CCI/"
+        }
+      ]
+    },
+    {
+      "id": "moderna",
+      "section": "earlier",
+      "tag": "Health care",
+      "time": "Fri Oct 23",
+      "confidence": "Confirmed",
+      "headline": "Moderna steadies after Thursday's 17.6% crash",
+      "news": "Moderna slipped another 1.25% on Friday to $200.10, a calmer day after Thursday's 17.6% crash, and another 0.62% on Monday. Leaked data for its personalized melanoma vaccine, made with Merck, showed the combination cut the risk of the cancer returning or causing death by 42%, and by 58% after six months. It also cut the risk of the cancer spreading to distant parts of the body by 38%.",
+      "history": "Moderna had nearly quadrupled since mid-August on vaccine hopes. Even decent data can then trigger a sell-the-news reaction, where investors sell after an announcement they bought in anticipation of.",
+      "says": "The data was actually positive. The stock fell because expectations had run too high.",
+      "impact": "The full results were due at a cancer conference in Madrid on Saturday, October 24. We have no report of what was shown, so check it before drawing conclusions. Until then Moderna can swing sharply on each new readout.",
+      "terms": [
+        [
+          "Sell the news",
+          "Investors sell after good news arrives because they already bought earlier, hoping for it."
+        ],
+        [
+          "Priced in",
+          "When expected news has already pushed the price up before it is announced."
+        ]
+      ],
+      "chart": {
+        "type": "bars",
+        "title": "Moderna daily change at the close",
+        "items": [
+          {
+            "label": "Thu Oct 22",
+            "value": -17.6
+          },
+          {
+            "label": "Fri Oct 23",
+            "value": -1.25
+          },
+          {
+            "label": "Mon Oct 26",
+            "value": -0.62
+          }
+        ],
+        "signed": true,
+        "decimals": 2,
+        "suffix": "%",
+        "toneBySign": true,
+        "note": "Sources: your Oct 23 and Oct 26 digests."
+      },
+      "sources": [
+        {
+          "title": "Moderna and Merck cancer vaccine, key endpoints in melanoma trial (Boston Globe)",
+          "url": "https://www.bostonglobe.com/2026/10/22/business/moderna-merck-cancer-vaccine-key-endpoints-melanoma-trial/"
+        },
+        {
+          "title": "Moderna on Yahoo Finance (live page)",
+          "url": "https://finance.yahoo.com/quote/MRNA/"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Market Notes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
+<style>
+/* Layout: a calm reading column with a sticky stock column on the right; one quiet card per story. */
+:root{
+  --bg:#F3F5F8; --surface:#FFFFFF; --ink:#16212B; --ink-2:#55657A; --line:#E0E6EC; --line-2:#CBD4DD;
+  --accent:#0B5C7A; --accent-ink:#FFFFFF; --tint:#EEF3F7; --bar2:#A9BBC9;
+  --pos:#15744A; --neg:#B0321E; --pos-bg:#E3F3EB; --neg-bg:#F9E6E1; --warn:#8A5A00; --warn-bg:#F7ECD6;
+  --serif:"IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --sans:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1620; --surface:#142130; --ink:#E8EEF3; --ink-2:#A2B3C2; --line:#223446; --line-2:#2F4358;
+    --accent:#6CC0DE; --accent-ink:#06202B; --tint:#192B3B; --bar2:#4B657E;
+    --pos:#4CC58B; --neg:#F27E69; --pos-bg:#12362A; --neg-bg:#3B1F1B; --warn:#E5B552; --warn-bg:#35290F;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1620; --surface:#142130; --ink:#E8EEF3; --ink-2:#A2B3C2; --line:#223446; --line-2:#2F4358;
+  --accent:#6CC0DE; --accent-ink:#06202B; --tint:#192B3B; --bar2:#4B657E;
+  --pos:#4CC58B; --neg:#F27E69; --pos-bg:#12362A; --neg-bg:#3B1F1B; --warn:#E5B552; --warn-bg:#35290F;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  background:var(--bg); color:var(--ink); font-family:var(--sans); font-size:17px; line-height:1.65;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:0 56px;
+}
+.wrap{max-width:1160px; margin:0 auto}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:2px}
+
+/* Masthead */
+.mast{padding-block:28px 18px; display:flex; flex-wrap:wrap; gap:10px 28px; align-items:flex-end; justify-content:space-between}
+.mast h1{font-family:var(--serif); font-weight:600; font-size:clamp(1.8rem, 4vw, 2.4rem); margin:0; letter-spacing:-.01em; line-height:1.1}
+.mast .sub{margin:6px 0 0; color:var(--ink-2); font-size:1rem}
+.stamp{font-size:.85rem; color:var(--ink-2); text-align:right; line-height:1.4}
+.stamp b{color:var(--ink); font-weight:600}
+
+/* Market strip */
+.strip{display:flex; gap:28px; overflow-x:auto; padding:14px 2px 16px; margin-bottom:22px; border-block:1px solid var(--line)}
+.strip .cell{flex:0 0 auto; min-width:0}
+.strip .nm{font-size:.8rem; color:var(--ink-2); white-space:nowrap}
+.strip .vl{font-family:var(--mono); font-weight:500; font-size:1.1rem; font-variant-numeric:tabular-nums; white-space:nowrap}
+.strip .sm{font-size:.78rem; color:var(--ink-2); white-space:nowrap}
+
+/* Change chips: colour plus arrow and sign, never colour alone */
+.chg{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:.82rem; font-weight:500; padding:1px 7px; border-radius:4px; white-space:nowrap; display:inline-block}
+.chg.up{color:var(--pos); background:var(--pos-bg)}
+.chg.dn{color:var(--neg); background:var(--neg-bg)}
+.chg.na{color:var(--ink-2); background:var(--tint)}
+
+/* Page grid */
+.grid{display:grid; grid-template-columns:minmax(0,1fr); gap:28px; align-items:start}
+@media (min-width:980px){ .grid{grid-template-columns:minmax(0,1fr) 320px} .side{position:sticky; top:16px} }
+
+/* Tabs */
+.filters{display:flex; gap:22px; margin:0 0 6px; border-bottom:1px solid var(--line)}
+.filters button{font:inherit; font-size:.98rem; padding:10px 0; border:0; border-bottom:2px solid transparent; background:none; color:var(--ink-2); cursor:pointer; margin-bottom:-1px}
+.filters button[aria-pressed="true"]{color:var(--ink); border-bottom-color:var(--accent); font-weight:600}
+
+/* At a glance */
+.glance{margin:18px 0 8px}
+.glance h2{font-size:.9rem; font-weight:600; margin:0 0 8px; color:var(--ink-2)}
+.glance ul{list-style:none; margin:0; padding:0; display:grid; gap:2px}
+.glance li button{font:inherit; text-align:left; width:100%; padding:8px 0; border:0; border-bottom:1px solid var(--line); background:none; color:var(--ink); cursor:pointer; display:flex; gap:12px; align-items:baseline}
+.glance li button:hover .gh{color:var(--accent)}
+.glance .gt{flex:0 0 7.5em; font-size:.8rem; color:var(--ink-2)}
+.glance .gh{min-width:0; line-height:1.4}
+@media (max-width:560px){ .glance li button{flex-direction:column; gap:0} .glance .gt{flex:none} }
+
+.sec-h{font-size:1.05rem; font-weight:600; margin:30px 0 14px; color:var(--ink)}
+.sec-h:first-child{margin-top:18px}
+
+/* Story */
+.story{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:26px 28px 22px; margin-bottom:20px; min-width:0}
+@media (max-width:560px){ .story{padding:20px 18px 18px} }
+.kick{display:flex; flex-wrap:wrap; gap:6px 12px; align-items:center; font-size:.82rem}
+.tag{font-weight:600; color:var(--accent)}
+.when{color:var(--ink-2)}
+.conf{padding:1px 9px; border-radius:999px; font-weight:500; font-size:.78rem}
+.conf-Confirmed{background:var(--pos-bg); color:var(--pos)}
+.conf-Likely{background:var(--warn-bg); color:var(--warn)}
+.conf-Unexplained{background:var(--tint); color:var(--ink-2)}
+.story h2{font-family:var(--serif); font-weight:600; font-size:clamp(1.35rem, 2.6vw, 1.7rem); line-height:1.25; margin:10px 0 12px; text-wrap:balance}
+.news{margin:0 0 22px; max-width:66ch}
+
+/* The simple-words block: labels on the left, text on the right */
+.explain{margin:0 0 22px; padding-top:18px; border-top:1px solid var(--line)}
+.explain h3{margin:0 0 12px; font-size:.95rem; font-weight:600; color:var(--accent)}
+.explain dl{margin:0; display:grid; gap:14px}
+.explain dt{font-weight:600; font-size:.92rem; color:var(--ink)}
+.explain dd{margin:0; max-width:66ch}
+@media (min-width:680px){
+  .explain dl{grid-template-columns:150px minmax(0,1fr); gap:14px 24px}
+  .explain dt{padding-top:1px}
+}
+
+/* Chart */
+.fig{margin:0 0 20px; padding:16px 18px 14px; background:var(--tint); border-radius:6px}
+.fig .ft{font-weight:600; font-size:.95rem; margin:0 0 8px}
+.fig svg{display:block; width:100%; height:auto; max-width:100%}
+.fig .note{font-size:.8rem; color:var(--ink-2); margin:8px 0 0; max-width:66ch}
+.fig ul{margin:10px 0 0; padding-left:18px; font-size:.88rem; color:var(--ink-2); max-width:66ch}
+.legend{display:flex; gap:16px; flex-wrap:wrap; font-size:.82rem; color:var(--ink-2); margin:0 0 6px}
+.legend i{display:inline-block; width:10px; height:10px; margin-right:6px; vertical-align:-1px; border-radius:2px}
+svg .t{fill:var(--ink-2); font-family:var(--sans); font-size:12px}
+svg .tv{fill:var(--ink); font-family:var(--mono); font-size:12px; font-weight:500}
+svg .grid-l{stroke:var(--line-2); stroke-width:1}
+svg .zero{stroke:var(--ink-2); stroke-width:1}
+
+/* Card footer: words and sources on the left, Know more on the right */
+.cardfoot{display:flex; flex-wrap:wrap; gap:14px 20px; align-items:flex-end; justify-content:space-between}
+.foot-l{flex:1 1 280px; min-width:0}
+details.terms{margin:0 0 8px}
+details.terms summary{cursor:pointer; font-weight:500; font-size:.92rem; color:var(--accent)}
+details.terms dl{margin:10px 0 0; display:grid; gap:8px; font-size:.92rem}
+details.terms dt{font-weight:600}
+details.terms dd{margin:0 0 2px; color:var(--ink-2)}
+.src{font-size:.82rem; color:var(--ink-2); margin:0}
+
+.askrow{display:block}
+.ask{font:inherit; font-size:.92rem; font-weight:600; padding:9px 18px; border:1px solid var(--accent); background:var(--surface); color:var(--accent); border-radius:6px; cursor:pointer}
+.ask:hover{background:var(--tint)}
+.ask[aria-expanded="true"]{background:var(--accent); color:var(--accent-ink)}
+
+/* Know more chat */
+.chat:empty{display:none}
+.chat{margin-top:16px; border-top:1px solid var(--line); padding-top:16px}
+.msg{margin:0 0 14px; max-width:66ch}
+.msg b{display:block; font-size:.78rem; color:var(--ink-2); margin-bottom:2px; font-weight:600}
+.msg.you .mt{background:var(--tint); padding:8px 12px; display:inline-block; border-radius:6px}
+.msg .mt{white-space:pre-wrap; overflow-wrap:anywhere}
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 14px}
+.chips button{font:inherit; font-size:.88rem; padding:7px 14px; border:1px solid var(--line-2); background:var(--surface); color:var(--ink); border-radius:999px; cursor:pointer; text-align:left}
+.chips button:hover{border-color:var(--accent)}
+.chatform{display:flex; gap:8px; flex-wrap:wrap}
+.chatform input{flex:1 1 220px; min-width:0; font:inherit; padding:10px 12px; border:1px solid var(--line-2); background:var(--bg); color:var(--ink); border-radius:6px}
+.chatform button{font:inherit; font-weight:600; padding:10px 18px; border:0; background:var(--accent); color:var(--accent-ink); border-radius:6px; cursor:pointer}
+.chatform button.stop{background:var(--tint); color:var(--ink)}
+.chaterr{font-size:.88rem; color:var(--neg); margin:0 0 10px}
+.chatnote{font-size:.78rem; color:var(--ink-2); margin:8px 0 0}
+
+/* Lesson and week */
+.card{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:20px 24px; margin-bottom:20px}
+.card h2{font-family:var(--serif); font-size:1.25rem; margin:0 0 10px}
+.week{display:grid; gap:12px; margin:0}
+.week div{display:grid; grid-template-columns:minmax(0,150px) minmax(0,1fr); gap:14px}
+.week dt{font-weight:600; font-size:.92rem}
+.week dd{margin:0}
+@media (max-width:520px){ .week div{grid-template-columns:1fr; gap:2px} }
+
+/* Side column */
+.side .card{padding:16px 18px; margin-bottom:16px}
+.side h2{font-family:var(--sans); font-size:.95rem; color:var(--ink); margin:0 0 6px; font-weight:600}
+.q{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:0 12px; padding:9px 0; border-top:1px solid var(--line); align-items:center}
+.q:first-of-type{border-top:0}
+.q .tk{font-family:var(--mono); font-weight:600}
+.q a.tk{color:inherit; text-decoration:none; border-bottom:1px dotted var(--muted,currentColor)}
+.q a.tk:hover{text-decoration:underline}
+.q .nm{font-size:.78rem; color:var(--ink-2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.q .px{font-family:var(--mono); font-variant-numeric:tabular-nums; text-align:right; font-size:.92rem}
+.q .rt{text-align:right}
+.q .rt .px{margin-bottom:2px}
+.q .rm{font:inherit; border:0; background:none; color:var(--ink-2); cursor:pointer; font-size:.78rem; padding:0; margin-left:8px; text-decoration:underline}
+.addrow{display:flex; gap:8px; margin-top:12px}
+.addrow input{flex:1; min-width:0; font:inherit; font-family:var(--mono); text-transform:uppercase; padding:9px 11px; border:1px solid var(--line-2); background:var(--bg); color:var(--ink); border-radius:6px}
+.addrow button{font:inherit; font-weight:600; padding:9px 16px; border:0; background:var(--accent); color:var(--accent-ink); border-radius:6px; cursor:pointer}
+.hint{font-size:.8rem; color:var(--ink-2); margin:8px 0 0}
+.empty{font-size:.9rem; color:var(--ink-2); margin:0}
+.foot{font-size:.82rem; color:var(--ink-2); margin-top:24px; max-width:70ch}
+.loading{padding:40px 0; color:var(--ink-2)}
+</style></head><body>
+
+<div class="wrap">
+  <header class="mast">
+    <div>
+      <h1>Market Notes</h1>
+      <p class="sub">The news first, then a plain-English explanation of what it means.</p>
+    </div>
+    <div class="stamp" id="stamp">Loading latest notes…</div>
+  </header>
+
+  <section class="strip" id="strip" aria-label="Market snapshot"></section>
+
+  <div class="grid">
+    <main id="feed" aria-live="polite">
+      <section class="glance" id="glance" aria-label="Today at a glance"></section>
+      <div class="filters" id="filters" role="group" aria-label="Show stories">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="today" aria-pressed="false">Today</button>
+        <button type="button" data-f="earlier" aria-pressed="false">Earlier this week</button>
+      </div>
+      <div id="stories"><p class="loading">Loading…</p></div>
+      <div id="extras"></div>
+      <p class="foot" id="disclaimer"></p>
+    </main>
+
+    <aside class="side" aria-label="Stock prices">
+      <section class="card">
+        <h2>Key stocks</h2>
+        <div id="keyList"></div>
+      </section>
+      <section class="card">
+        <h2>My watchlist</h2>
+        <div id="watchList"></div>
+        <form class="addrow" id="addForm" autocomplete="off">
+          <input id="addTicker" name="ticker" type="text" inputmode="text" maxlength="8" placeholder="Ticker, e.g. NVDA" aria-label="Add a ticker to your watchlist">
+          <button type="submit">Add</button>
+        </form>
+        <p class="hint" id="addHint">Type a stock symbol and press Add. Prices for new symbols appear at the next refresh.</p>
+      </section>
+    </aside>
+  </div>
+</div>
+
+<script>
+(function(){
+  var DATA = null;
+  var watch = [];            // tickers, in the order added
+  var wdb = null;            // db collection for the watchlist, when available
+  var LS_KEY = "market-notes-watchlist";
+
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
+  function fmtNum(v,o){
+    o=o||{}; var d=o.decimals==null?2:o.decimals;
+    var s=Math.abs(v).toFixed(d);
+    if(o.trimZeros){ s=String(parseFloat(s)); }
+    var sign = v<0 ? "−" : (o.signed && v>0 ? "+" : "");
+    return sign+(o.prefix||"")+s+(o.suffix||"");
+  }
+  function chg(p){
+    if(p==null) return '<span class="chg na">no data</span>';
+    var cls = p>0?"up":(p<0?"dn":"na");
+    var arrow = p>0?"▲ ":(p<0?"▼ ":"");
+    return '<span class="chg '+cls+'">'+arrow+(p>0?"+":(p<0?"−":""))+Math.abs(p).toFixed(2)+'%</span>';
+  }
+
+  /* ---------- charts (inline SVG, drawn to scale) ---------- */
+  function hbars(c){
+    var W=640, left=200, right=76, rowH=(c.series?44:34), top=8;
+    var items=c.items, ns=c.series?c.series.length:1;
+    var vals=[]; items.forEach(function(it){ (c.series?it.values:[it.value]).forEach(function(v){vals.push(v);}); });
+    var mn=Math.min.apply(null,vals.concat([0])), mx=Math.max.apply(null,vals.concat([0]));
+    var pad=(mx-mn)*0.04;
+    var lo = mn<0 ? mn - (mx-mn)*0.16 : 0;
+    var hi = mx>0 ? mx + pad : 0;
+    var x0w=left, x1w=W-right;
+    function X(v){ return x0w + (v-lo)/(hi-lo)*(x1w-x0w); }
+    var zero=X(0);
+    var H=top+items.length*rowH+8, out='';
+    out+='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(c.title)+'">';
+    out+='<line class="zero" x1="'+zero+'" x2="'+zero+'" y1="'+top+'" y2="'+(H-6)+'"/>';
+    items.forEach(function(it,i){
+      var yc=top+i*rowH+rowH/2;
+      out+='<text class="t" x="'+(left-12)+'" y="'+(yc+4)+'" text-anchor="end">'+esc(it.label)+'</text>';
+      var arr=c.series?it.values:[it.value];
+      arr.forEach(function(v,k){
+        var bh = c.series?14:18;
+        var by = c.series ? (yc-bh-1+k*(bh+2)) : (yc-bh/2);
+        var xe=X(v), x=Math.min(zero,xe), w=Math.max(Math.abs(xe-zero),1.5);
+        var fill;
+        if(c.series){ fill = k===0 ? 'var(--bar2)' : 'var(--accent)'; }
+        else if(c.toneBySign){ fill = v<0 ? 'var(--neg)' : 'var(--pos)'; }
+        else { fill = it.tone==='muted' ? 'var(--bar2)' : 'var(--accent)'; }
+        out+='<rect x="'+x+'" y="'+by+'" width="'+w+'" height="'+bh+'" fill="'+fill+'"/>';
+        var lab=fmtNum(v,c), lx = v<0 ? xe-6 : xe+6, anchor = v<0 ? 'end' : 'start';
+        var ly = by+bh/2+4;
+        out+='<text class="tv" x="'+lx+'" y="'+ly+'" text-anchor="'+anchor+'">'+esc(lab)+'</text>';
+      });
+    });
+    out+='</svg>';
+    return out;
+  }
+
+  function lineChart(c){
+    var W=640,H=270,l=56,r=22,t=24,b=44;
+    var v=c.values, n=v.length;
+    var mn=Math.min.apply(null,v), mx=Math.max.apply(null,v);
+    var span=mx-mn, step = span>60?20:(span>25?10:(span>10?5:2));
+    var lo=Math.floor((mn-span*0.08)/step)*step, hi=Math.ceil((mx+span*0.08)/step)*step;
+    function X(i){ return l+(n===1?0:i*(W-l-r)/(n-1)); }
+    function Y(val){ return t+(hi-val)/(hi-lo)*(H-t-b); }
+    var out='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(c.title)+'">';
+    for(var g=lo; g<=hi+0.0001; g+=step){
+      var gy=Y(g);
+      out+='<line class="grid-l" x1="'+l+'" x2="'+(W-r)+'" y1="'+gy+'" y2="'+gy+'"/>';
+      out+='<text class="t" x="'+(l-8)+'" y="'+(gy+4)+'" text-anchor="end">'+esc((c.prefix||"")+g.toFixed(0))+'</text>';
+    }
+    var ds=c.dashedFrom==null?n:c.dashedFrom;
+    var solid='', dash='';
+    for(var i=0;i<n;i++){
+      var pt=X(i).toFixed(1)+','+Y(v[i]).toFixed(1);
+      if(i<=ds) solid+=(solid?' ':'')+pt;
+      if(i>=ds && c.dashedFrom!=null) dash+=(dash?' ':'')+pt;
+    }
+    out+='<polyline points="'+solid+'" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round"/>';
+    if(dash) out+='<polyline points="'+dash+'" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5 5"/>';
+    var imx=v.indexOf(mx), imn=v.indexOf(mn);
+    var show={}; show[0]=1; show[n-1]=1; show[imx]=1; show[imn]=1;
+    for(var j=0;j<n;j++){
+      var cx=X(j), cy=Y(v[j]);
+      out+='<circle cx="'+cx+'" cy="'+cy+'" r="'+(show[j]?4.5:3)+'" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/>';
+      if(show[j]){
+        var up = j!==imn;
+        var ty = up ? cy-10 : cy+20;
+        var anchor = j===0 ? 'start' : (j===n-1 ? 'end' : 'middle');
+        var tx = j===0 ? cx-4 : (j===n-1 ? cx+4 : cx);
+        out+='<text class="tv" x="'+tx+'" y="'+ty+'" text-anchor="'+anchor+'">'+esc(fmtNum(v[j],{prefix:c.prefix,decimals:c.decimals}))+'</text>';
+      }
+      var xa = j===0 ? 'start' : (j===n-1 ? 'end' : 'middle');
+      var xx = j===0 ? cx-14 : (j===n-1 ? cx+14 : cx);
+      out+='<text class="t" x="'+xx+'" y="'+(H-b+20)+'" text-anchor="'+xa+'">'+esc(c.labels[j])+'</text>';
+    }
+    out+='</svg>';
+    return out;
+  }
+
+  function chartHTML(c){
+    if(!c) return '';
+    var body = c.type==='line' ? lineChart(c) : hbars(c);
+    var legend = c.series ? '<div class="legend"><span><i style="background:var(--bar2)"></i>'+esc(c.series[0])+'</span><span><i style="background:var(--accent)"></i>'+esc(c.series[1])+'</span></div>' : '';
+    var ev = (c.events&&c.events.length) ? '<ul>'+c.events.map(function(e){return '<li>'+esc(e)+'</li>';}).join('')+'</ul>' : '';
+    return '<figure class="fig"><p class="ft">'+esc(c.title)+'</p>'+legend+body+ev+(c.note?'<p class="note">'+esc(c.note)+'</p>':'')+'</figure>';
+  }
+
+  /* ---------- feed ---------- */
+  function storyHTML(s){
+    var terms = (s.terms&&s.terms.length) ? '<details class="terms"><summary>Words in this story</summary><dl>'+s.terms.map(function(t){return '<dt>'+esc(t[0])+'</dt><dd>'+esc(t[1])+'</dd>';}).join('')+'</dl></details>' : '';
+    var src = (s.sources&&s.sources.length) ? '<p class="src">Sources: '+s.sources.map(function(x){return '<a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.title)+'</a>';}).join(' · ')+'</p>' : '';
+    return '<article class="story" data-sec="'+esc(s.section)+'" id="'+esc(s.id)+'">'
+      +'<div class="kick"><span class="tag">'+esc(s.tag)+'</span><span class="when">'+esc(s.time)+'</span><span class="conf conf-'+esc(s.confidence)+'">'+esc(s.confidence)+'</span></div>'
+      +'<h2>'+esc(s.headline)+'</h2>'
+      +'<p class="news">'+esc(s.news)+'</p>'
+      +'<div class="explain"><h3>In simple words</h3><dl>'
+      +'<dt>Background</dt><dd>'+esc(s.history)+'</dd>'
+      +'<dt>What this news says</dt><dd>'+esc(s.says)+'</dd>'
+      +'<dt>What could happen next</dt><dd>'+esc(s.impact)+'</dd>'
+      +'</dl></div>'
+      +chartHTML(s.chart)+'<div class="cardfoot"><div class="foot-l">'+terms+src+'</div>'
+      +'<div class="askrow"><button type="button" class="ask" data-ask="'+esc(s.id)+'" aria-expanded="'+(chats[s.id]&&chats[s.id].open?'true':'false')+'">'+(chats[s.id]&&chats[s.id].open?'Hide chat':'Know more')+'</button></div></div>'
+      +'<div class="chat" id="chat-'+esc(s.id)+'" data-chat="'+esc(s.id)+'">'+chatHTML(s.id)+'</div>'
+      +'</article>';
+  }
+
+  var filter="all";
+  function renderStories(){
+    var html='', today=DATA.stories.filter(function(s){return s.section==='today';}), earlier=DATA.stories.filter(function(s){return s.section==='earlier';});
+    if(filter!=='earlier' && today.length) html+='<h2 class="sec-h">Today</h2>'+today.map(storyHTML).join('');
+    if(filter!=='today' && earlier.length) html+='<h2 class="sec-h">Earlier this week</h2>'+earlier.map(storyHTML).join('');
+    document.getElementById('stories').innerHTML=html;
+  }
+  function renderGlance(){
+    var t=DATA.stories.filter(function(s){return s.section==='today';});
+    var el=document.getElementById('glance');
+    if(filter==='earlier'||!t.length){ el.innerHTML=''; return; }
+    el.innerHTML='<h2>At a glance</h2><ul>'+t.map(function(s){return '<li><button type="button" data-go="'+esc(s.id)+'"><span class="gt">'+esc(s.tag)+'</span><span class="gh">'+esc(s.headline)+'</span></button></li>';}).join('')+'</ul>';
+  }
+  function renderExtras(){
+    var w=DATA.week||[], html='';
+    if(DATA.lesson) html+='<section class="card"><h2>'+esc(DATA.lesson.title)+'</h2><p style="margin:0;max-width:68ch">'+esc(DATA.lesson.body)+'</p></section>';
+    if(w.length) html+='<section class="card"><h2>This week</h2><dl class="week">'+w.map(function(e){return '<div><dt>'+esc(e.when)+'</dt><dd>'+esc(e.what)+'</dd></div>';}).join('')+'</dl></section>';
+    document.getElementById('extras').innerHTML=filter==='earlier'?'':html;
+  }
+
+  /* ---------- sidebar ---------- */
+  function quoteRow(tk, removable){
+    var q=(DATA.quotes||{})[tk];
+    if(!q) return '<div class="q"><div><a class="tk" href="https://finance.yahoo.com/quote/'+encodeURIComponent(tk)+'" target="_blank" rel="noopener noreferrer" title="Open '+esc(tk)+' on Yahoo Finance">'+esc(tk)+'</a>'+(removable?'<button type="button" class="rm" data-rm="'+esc(tk)+'" aria-label="Remove '+esc(tk)+' from watchlist">remove</button>':'')+'<div class="nm">Added to your list</div></div><div class="rt"><span class="chg na">next refresh</span></div></div>';
+    var price = q.price==null ? '' : '$'+q.price.toFixed(2);
+    var asof = q.changePct==null ? 'Waiting for the next refresh' : ('Change as of '+q.asOf);
+    return '<div class="q"><div><a class="tk" href="https://finance.yahoo.com/quote/'+encodeURIComponent(tk)+'" target="_blank" rel="noopener noreferrer" title="Open '+esc(tk)+' on Yahoo Finance">'+esc(tk)+'</a>'+(removable?'<button type="button" class="rm" data-rm="'+esc(tk)+'" aria-label="Remove '+esc(tk)+' from watchlist">remove</button>':'')+'<div class="nm">'+esc(q.name)+(q.asOf?' \u00b7 '+esc(q.asOf):'')+'</div></div>'
+      +'<div class="rt">'+(price?'<div class="px">'+price+'</div>':'')+chg(q.changePct)+'</div></div>';
+  }
+  function renderSide(){
+    document.getElementById('keyList').innerHTML=(DATA.keyStocks||[]).map(function(t){return quoteRow(t,false);}).join('');
+    var wl=document.getElementById('watchList');
+    wl.innerHTML = watch.length ? watch.map(function(t){return quoteRow(t,true);}).join('') : '<p class="empty">Nothing here yet. Add the companies you want to follow.</p>';
+  }
+  function renderStrip(){
+    document.getElementById('strip').innerHTML=(DATA.markets||[]).map(function(m){
+      return '<div class="cell"><div class="nm">'+esc(m.name)+'</div><div class="vl">'+esc(m.value)+'</div><div class="sm">'+(m.changePct==null?'':chg(m.changePct)+' ')+esc(m.asOf)+'</div></div>';
+    }).join('');
+  }
+
+  /* ---------- watchlist storage ---------- */
+  function lsRead(){ try{ var v=JSON.parse(localStorage.getItem(LS_KEY)||"[]"); return Array.isArray(v)?v:[]; }catch(e){ return []; } }
+  function lsWrite(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(watch)); }catch(e){} }
+  var writing=Promise.resolve();
+  function dbSet(tk){ if(!wdb) return; writing=writing.then(function(){ return wdb.doc(tk).set({ticker:tk, addedAt:Date.now()}); }).catch(function(){}); }
+  function dbDel(tk){ if(!wdb) return; writing=writing.then(function(){ return wdb.doc(tk).delete(); }).catch(function(){}); }
+
+  function addTicker(raw){
+    var tk=String(raw||"").trim().toUpperCase().replace(/^\$/,"");
+    var hint=document.getElementById('addHint');
+    if(!/^[A-Z][A-Z0-9.\-]{0,7}$/.test(tk)){ hint.textContent="That does not look like a stock symbol. Try letters only, like NVDA or BRK-B."; return; }
+    if(watch.indexOf(tk)>=0){ hint.textContent=tk+" is already on your list."; return; }
+    watch.push(tk); lsWrite(); dbSet(tk); renderSide();
+    hint.textContent = (DATA.quotes&&DATA.quotes[tk]) ? tk+" added." : tk+" added. Its price appears at the next refresh.";
+  }
+  function removeTicker(tk){
+    watch=watch.filter(function(t){return t!==tk;}); lsWrite(); dbDel(tk); renderSide();
+  }
+
+  function initDb(){
+    if(!window.claude || !window.claude.use) return;
+    window.claude.use("db").then(function(db){
+      if(!db) return;
+      wdb=db.collection("watchlist");
+      var first=true;
+      wdb.orderBy("addedAt","asc").onSnapshot(function(snap){
+        var fromDb=snap.docs.map(function(d){return d.data().ticker;}).filter(Boolean);
+        if(first){
+          first=false;
+          // bring any tickers saved only in this browser into the shared list
+          watch.forEach(function(t){ if(fromDb.indexOf(t)<0) dbSet(t); });
+          var merged=fromDb.slice(); watch.forEach(function(t){ if(merged.indexOf(t)<0) merged.push(t); });
+          watch=merged;
+        } else { watch=fromDb; }
+        lsWrite(); renderSide();
+      }, function(){ /* keep working from local storage */ });
+    }).catch(function(){});
+  }
+
+  /* ---------- Know more: a short chat about one story ---------- */
+  var sampleFn=null, chats={};
+  var RULES="You are helping Behrooz, a software engineer who is new to finance and learns by reading market news. He is asking about ONE news story, given below as JSON. Rules: answer in simple English; spell out every abbreviation the first time you use it; keep answers short (under 150 words unless he asks for more); explain the idea with a small everyday example when it helps; rely on the story and on well-known background; you cannot browse and your own knowledge may be out of date, so say so when a question needs newer facts and do not invent numbers; never tell him to buy or sell anything and never give investment advice, but you may explain what factors people weigh; end with one short follow-up question he could ask next only when it adds value.";
+  var CHIPS=["Explain this more simply","Why did the price move?","What should I learn next to understand this?"];
+
+  function initSample(){
+    if(!window.claude||!window.claude.use) return;
+    window.claude.use("sample").then(function(s){
+      if(!s) return;
+      sampleFn=s; document.body.classList.add('can-ask');
+    }).catch(function(){});
+  }
+  function storyById(id){ return DATA.stories.filter(function(s){return s.id===id;})[0]; }
+  function contextFor(s){
+    var c=s.chart?{title:s.chart.title,items:s.chart.items||null,labels:s.chart.labels||null,values:s.chart.values||null,series:s.chart.series||null,note:s.chart.note||null}:null;
+    return JSON.stringify({headline:s.headline,topic:s.tag,when:s.time,confidence:s.confidence,news:s.news,background:s.history,whatItSays:s.says,whatCouldHappen:s.impact,words:s.terms,chart:c,sources:s.sources});
+  }
+  function chatHTML(id){
+    var st=chats[id]; if(!st||!st.open) return '';
+    var h='';
+    st.turns.forEach(function(t){
+      h+='<div class="msg '+(t.role==='user'?'you':'claude')+'"><b>'+(t.role==='user'?'You':'Claude')+'</b><div class="mt">'+esc(t.content)+'</div></div>';
+    });
+    if(st.busy) h+='<div class="msg claude"><b>Claude</b><div class="mt" id="pend-'+esc(id)+'">'+esc(st.pending||'Thinking…')+'</div></div>';
+    if(!st.turns.length && !st.busy) h+='<div class="chips">'+CHIPS.map(function(q){return '<button type="button" data-q="'+esc(q)+'">'+esc(q)+'</button>';}).join('')+'</div>';
+    if(st.err) h+='<p class="chaterr" role="alert">'+esc(st.err)+'</p>';
+    h+='<form class="chatform" data-id="'+esc(id)+'" autocomplete="off"><input id="chati-'+esc(id)+'" type="text" maxlength="500" placeholder="Ask anything about this story" aria-label="Ask a question about this story"'+(st.busy?' disabled':'')+'>'
+      +(st.busy?'<button type="button" class="stop" data-stop="'+esc(id)+'">Stop</button>':'<button type="submit">Send</button>')+'</form>'
+      +'<p class="chatnote">Answers come from Claude using only this story. They are for learning, not advice.</p>';
+    return h;
+  }
+  function refreshChat(id){ var el=document.getElementById('chat-'+id); if(el) el.innerHTML=chatHTML(id); }
+  function toggleChat(id){
+    var st=chats[id]||(chats[id]={turns:[],open:false,busy:false,pending:'',err:'',ctl:null});
+    st.open=!st.open;
+    var art=document.getElementById(id);
+    var btn=art&&art.querySelector('.ask');
+    if(btn){ btn.setAttribute('aria-expanded',st.open?'true':'false'); btn.textContent=st.open?'Hide chat':'Know more'; }
+    refreshChat(id);
+    if(st.open){ var inp=document.getElementById('chati-'+id); if(inp) inp.focus(); }
+  }
+  function errCopy(code){
+    if(code==='rate_limited') return 'Too many questions right now, or your Claude usage limit was reached. Try again later.';
+    if(code==='session_expired') return 'Please sign in to Claude again, then ask once more.';
+    if(code==='refused') return 'Claude could not answer that one. Try asking it a different way.';
+    if(code==='empty_completion'||code==='prompt_too_large'||code==='invalid_request') return 'That question did not work. Try a shorter or simpler one.';
+    return 'Something went wrong. Press Send to try again.';
+  }
+  function send(id, text){
+    var st=chats[id]; var story=storyById(id);
+    text=String(text||'').trim();
+    if(!sampleFn||!st||!story||st.busy||!text) return;
+    st.turns.push({role:'user',content:text});
+    st.busy=true; st.pending=''; st.err='';
+    st.ctl=new AbortController();
+    refreshChat(id);
+    var input=[{role:'user',content:RULES+'\n\nSTORY (JSON):\n'+contextFor(story)}].concat(st.turns.slice(-12));
+    function finish(){
+      st.busy=false; st.pending=''; st.ctl=null; refreshChat(id);
+      var inp=document.getElementById('chati-'+id); if(inp) inp.focus();
+    }
+    sampleFn(input,{cache:false,signal:st.ctl.signal,onText:function(u){
+      st.pending=u.text; var b=document.getElementById('pend-'+id); if(b) b.textContent=u.text;
+    }}).then(function(r){
+      st.turns.push({role:'assistant',content:r.text}); finish();
+    }).catch(function(e){
+      var code=(e&&e.code)||'upstream_error';
+      if(e&&e.text&&code!=='refused') st.turns.push({role:'assistant',content:e.text+(code==='cancelled'?'':' (cut off)')});
+      if(code==='not_granted'||code==='sampling_disabled'||code==='not_declared'||code==='capability_disabled'||code==='capability_removed'){
+        document.body.classList.remove('can-ask'); sampleFn=null; st.err='Asking Claude is not available here.';
+      } else if(code!=='cancelled'){ st.err=errCopy(code); }
+      finish();
+    });
+  }
+  document.getElementById('stories').addEventListener('click',function(e){
+    var a=e.target.closest('[data-ask]');
+    if(a){
+      if(sampleFn){ toggleChat(a.getAttribute('data-ask')); return; }
+      var sty=storyById(a.getAttribute('data-ask')); if(!sty) return;
+      var prompt=RULES+'\n\nSTORY (JSON):\n'+contextFor(sty)+'\n\nStart by explaining this story in simple words, then ask me what I want to know.';
+      window.open('https://claude.ai/new?q='+encodeURIComponent(prompt),'_blank','noopener');
+      return;
+    }
+    var q=e.target.closest('[data-q]'); if(q){ var box=q.closest('[data-chat]'); if(box) send(box.getAttribute('data-chat'), q.getAttribute('data-q')); return; }
+    var s=e.target.closest('[data-stop]'); if(s){ var st=chats[s.getAttribute('data-stop')]; if(st&&st.ctl) st.ctl.abort(); }
+  });
+  document.getElementById('stories').addEventListener('submit',function(e){
+    var f=e.target.closest('form.chatform'); if(!f) return;
+    e.preventDefault();
+    var id=f.getAttribute('data-id'), inp=f.querySelector('input');
+    var v=inp.value; inp.value=''; send(id, v);
+  });
+
+  /* ---------- boot ---------- */
+  function paint(){
+    document.getElementById('stamp').innerHTML='Updated <b>'+esc(DATA.updatedLabel)+'</b><br>'+esc(DATA.refreshNote||"");
+    document.getElementById('disclaimer').textContent=DATA.disclaimer||"";
+    renderStrip(); renderGlance(); renderStories(); renderExtras(); renderSide();
+  }
+  document.getElementById('filters').addEventListener('click',function(e){
+    var b=e.target.closest('button[data-f]'); if(!b) return;
+    filter=b.getAttribute('data-f');
+    Array.prototype.forEach.call(this.querySelectorAll('button'),function(x){ x.setAttribute('aria-pressed', x===b?'true':'false'); });
+    renderGlance(); renderStories(); renderExtras();
+  });
+  document.getElementById('glance').addEventListener('click',function(e){
+    var b=e.target.closest('button[data-go]'); if(!b) return;
+    var el=document.getElementById(b.getAttribute('data-go'));
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+  document.getElementById('addForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var inp=document.getElementById('addTicker'); addTicker(inp.value); inp.value="";
+  });
+  document.getElementById('watchList').addEventListener('click',function(e){
+    var b=e.target.closest('button[data-rm]'); if(b) removeTicker(b.getAttribute('data-rm'));
+  });
+
+  watch=lsRead();
+  fetch('data.json?v='+Date.now()).then(function(r){ if(!r.ok) throw new Error('load'); return r.json(); }).then(function(j){
+    DATA=j; paint(); initDb(); initSample();
+  }).catch(function(){
+    document.getElementById('stories').innerHTML='<p class="loading">The latest notes could not be loaded. Reload the page in a moment.</p>';
+    document.getElementById('stamp').textContent='Not updated';
+  });
+})();
+</script>
+</body></html>
