@@ -535,6 +535,58 @@ details.terms dd{margin:0 0 2px; color:var(--ink-2)}
 
   /* ---------- explain selected text (right click / long press) ---------- */
   var GLOSS={
+    "edge up":"Rise by a small amount. Markets use this when a price or index goes up only slightly.",
+    "edge down":"Fall by a small amount. Markets use this when a price or index goes down only slightly.",
+    "edged up":"Rose by a small amount.",
+    "edged down":"Fell by a small amount.",
+    "inch up":"Rise very slightly.",
+    "tick up":"Rise by a tiny amount.",
+    "tick down":"Fall by a tiny amount.",
+    "slip":"Fall a little.",
+    "slide":"Fall steadily, often over several sessions.",
+    "dip":"A small, short drop in price.",
+    "climb":"Rise steadily.",
+    "gain":"A rise in price.",
+    "surge":"A big, fast rise in price.",
+    "soar":"A very large, fast rise in price.",
+    "jump":"A sudden rise in price.",
+    "tumble":"A big, fast fall in price.",
+    "plunge":"A very sharp, fast fall in price.",
+    "sink":"Fall in price, often by a lot.",
+    "slump":"A long or deep fall in prices or sales.",
+    "rebound":"Prices recover after a fall.",
+    "pare gains":"Give back part of an earlier rise during the day.",
+    "pare losses":"Recover part of an earlier drop during the day.",
+    "flat":"Almost unchanged from the previous close.",
+    "mixed":"Some stocks or indexes rose while others fell.",
+    "close":"The final price of a trading session, set when the market shuts at 4 p.m. Eastern.",
+    "open":"The first price of a trading session, set at 9:30 a.m. Eastern.",
+    "session":"One trading day, from the opening bell to the closing bell.",
+    "tech stocks":"Shares of technology companies, such as software, chip and internet firms.",
+    "blue chip":"A large, long-established company seen as reliable.",
+    "sentiment":"The overall mood of investors: hopeful (bullish) or worried (bearish).",
+    "bullish":"Expecting prices to rise.",
+    "bearish":"Expecting prices to fall.",
+    "headwind":"Something that makes it harder for a company or market to grow.",
+    "tailwind":"Something that helps a company or market grow.",
+    "outlook":"A forecast of how a company or economy will do in the future.",
+    "profit warning":"A company says its profit will be lower than expected. The stock often falls.",
+    "bankruptcy":"A court process for a company that cannot pay its debts.",
+    "stake":"A share of ownership in a company.",
+    "valuation":"An estimate of how much a company is worth.",
+    "private equity":"Investment firms that buy whole companies using investors' money, then try to sell them later for more.",
+    "leveraged buyout":"Buying a company mostly with borrowed money, which is repaid using the company's own cash flow.",
+    "premium":"An extra amount paid above the current market price.",
+    "cash flow":"Money moving in and out of a company over a period.",
+    "debt":"Money owed to lenders.",
+    "credit":"Borrowing, or a borrower's ability to repay.",
+    "jobs report":"A monthly US government report on how many jobs were added and the unemployment rate.",
+    "unemployment rate":"The share of people who want a job but do not have one.",
+    "soft landing":"When the economy cools enough to slow inflation without causing a recession.",
+    "stagflation":"Slow growth and high inflation at the same time.",
+    "quantitative tightening":"The Fed shrinking its holdings of bonds, which takes money out of the financial system.",
+    "dot plot":"A Fed chart showing where each policymaker expects interest rates to be in the future.",
+    "stock split":"A company divides each share into several, lowering the price per share. Total value stays the same.",
     "stock":"A small piece of ownership in a company. If the company does well, the piece can become worth more.",
     "share":"One unit of ownership in a company.",
     "etf":"Exchange-traded fund: a basket of many stocks or bonds you can buy in one trade, like a single stock.",
@@ -635,8 +687,17 @@ details.terms dd{margin:0 0 2px; color:var(--ink-2)}
   }
   function lookup(sel){
     var g=buildGloss(), k=normTerm(sel);
-    if(g[k]) return {term:sel,def:g[k]};
-    if(k.length>3 && k.slice(-1)==='s' && g[k.slice(0,-1)]) return {term:sel,def:g[k.slice(0,-1)]};
+    function exact(x){ if(g[x]) return g[x]; var vars=[x.replace(/ed$/,''),x.replace(/ed$/,'e'),x.replace(/ing$/,''),x.replace(/s$/,''),x.replace(/es$/,'')]; for(var i=0;i<vars.length;i++){ if(vars[i]!==x&&g[vars[i]]) return g[vars[i]]; } return null; }
+    var d=exact(k); if(d) return {term:sel,def:d};
+    var words=k.split(' ');
+    if(words.length>1){
+      var last=words.slice(0,-1).join(' ')+' '+words[words.length-1];
+      for(var n=words.length-1;n>=1;n--){
+        for(var i=0;i+n<=words.length;i++){ d=exact(words.slice(i,i+n).join(' ')); if(d && (n>1||words.length<=3)) return {term:sel,def:d}; }
+      }
+    }
+    var hits=Object.keys(g).filter(function(key){ return key.length>3 && (' '+k+' ').indexOf(' '+key+' ')>=0; });
+    if(hits.length){ hits.sort(function(a,b){return b.length-a.length;}); return {term:sel,def:g[hits[0]]}; }
     return null;
   }
   var popEl=null;
