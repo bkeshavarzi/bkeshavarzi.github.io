@@ -186,7 +186,7 @@ details.terms dd{margin:0 0 2px; color:var(--ink-2)}
 .xp-x{border:0; background:none; color:var(--ink-2); font-size:20px; line-height:1; cursor:pointer; padding:0 2px}
 .xp p{margin:6px 0 10px}
 .xp-na{color:var(--ink-2)}
-.xp-l{display:flex; gap:14px}
+.xp-l{display:flex; flex-wrap:wrap; gap:6px 14px}
 .xp-l a{color:var(--accent); font-weight:600; font-size:13px}
 </style></head><body>
 
@@ -709,6 +709,7 @@ details.terms dd{margin:0 0 2px; color:var(--ink-2)}
     var h='<div class="xp-h"><b>'+esc(sel.length>60?sel.slice(0,60)+'…':sel)+'</b><button type="button" class="xp-x" aria-label="Close">×</button></div>';
     h+= hit ? '<p>'+esc(hit.def)+'</p>' : '<p class="xp-na">No built-in explanation for this one yet.</p>';
     h+='<div class="xp-l"><a target="_blank" rel="noopener noreferrer" href="https://claude.ai/new?q='+encodeURIComponent(ask)+'">Ask Claude</a>'
+      +'<a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q='+encodeURIComponent(sel+' meaning in stock market')+'">Search Google</a>'
       +'<a target="_blank" rel="noopener noreferrer" href="https://www.investopedia.com/search?q='+encodeURIComponent(sel)+'">Investopedia</a></div>';
     popEl=document.createElement('div'); popEl.className='xp'; popEl.setAttribute('role','dialog'); popEl.innerHTML=h;
     document.body.appendChild(popEl);
