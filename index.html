@@ -180,6 +180,14 @@ details.terms dd{margin:0 0 2px; color:var(--ink-2)}
 .empty{font-size:.9rem; color:var(--ink-2); margin:0}
 .foot{font-size:.82rem; color:var(--ink-2); margin-top:24px; max-width:70ch}
 .loading{padding:40px 0; color:var(--ink-2)}
+.xp{position:fixed; z-index:50; width:min(300px,calc(100vw - 16px)); background:var(--surface); color:var(--ink); border:1px solid var(--line-2); border-radius:10px; box-shadow:0 8px 28px rgba(0,0,0,.22); padding:12px 14px; font-family:var(--sans); font-size:14px; line-height:1.5}
+.xp-h{display:flex; align-items:center; justify-content:space-between; gap:8px}
+.xp-h b{font-family:var(--serif)}
+.xp-x{border:0; background:none; color:var(--ink-2); font-size:20px; line-height:1; cursor:pointer; padding:0 2px}
+.xp p{margin:6px 0 10px}
+.xp-na{color:var(--ink-2)}
+.xp-l{display:flex; gap:14px}
+.xp-l a{color:var(--accent); font-weight:600; font-size:13px}
 </style></head><body>
 
 <div class="wrap">
@@ -524,6 +532,139 @@ details.terms dd{margin:0 0 2px; color:var(--ink-2)}
     var id=f.getAttribute('data-id'), inp=f.querySelector('input');
     var v=inp.value; inp.value=''; send(id, v);
   });
+
+  /* ---------- explain selected text (right click / long press) ---------- */
+  var GLOSS={
+    "stock":"A small piece of ownership in a company. If the company does well, the piece can become worth more.",
+    "share":"One unit of ownership in a company.",
+    "etf":"Exchange-traded fund: a basket of many stocks or bonds you can buy in one trade, like a single stock.",
+    "exchange-traded fund":"A basket of many stocks or bonds you can buy in one trade, like a single stock.",
+    "index":"A score that tracks a group of stocks, such as the S&P 500, to show how the market is doing.",
+    "s&p 500":"An index of 500 large US companies. People use it as a quick measure of the whole US stock market.",
+    "dow":"Dow Jones Industrial Average: an index of 30 large US companies.",
+    "nasdaq":"A US stock exchange known for technology companies. The Nasdaq Composite is an index of its stocks.",
+    "bull market":"A long period when stock prices rise and people feel optimistic.",
+    "bear market":"A period when prices fall about 20% or more from a recent high.",
+    "volatility":"How much and how fast a price jumps up and down. High volatility means bigger, faster swings.",
+    "dividend":"A share of a company's profit paid out to its stockholders, usually every quarter.",
+    "earnings":"The profit a company reports for a period, usually a quarter (three months).",
+    "eps":"Earnings per share: profit divided by the number of shares. Used to compare companies of different sizes.",
+    "earnings per share":"Profit divided by the number of shares. Used to compare companies of different sizes.",
+    "revenue":"All the money a company brings in from sales, before costs are subtracted.",
+    "guidance":"The company's own forecast for its next quarter or year. Stocks often move more on guidance than on past results.",
+    "market cap":"Market capitalization: share price times number of shares. It is the market's price tag for the whole company.",
+    "market capitalization":"Share price times number of shares. It is the market's price tag for the whole company.",
+    "p/e":"Price-to-earnings ratio: share price divided by yearly earnings per share. A high number means investors pay more for each dollar of profit.",
+    "price-to-earnings":"Share price divided by yearly earnings per share. A high number means investors pay more for each dollar of profit.",
+    "ipo":"Initial public offering: the first time a company sells its shares to the public on a stock exchange.",
+    "initial public offering":"The first time a company sells its shares to the public on a stock exchange.",
+    "secondary offering":"When a company that is already public sells more shares. This can lower the share price because there are more shares to go around.",
+    "dilution":"When a company creates more shares, each existing share becomes a smaller slice of the company.",
+    "take-private":"When a buyer purchases all of a public company's shares so it no longer trades on the stock market.",
+    "merger":"Two companies combine into one.",
+    "acquisition":"One company buys another.",
+    "buyback":"A company buys its own shares from the market. Fewer shares left means each remaining share owns a bigger slice.",
+    "short selling":"Betting a stock will fall: you borrow shares, sell them, and hope to buy them back cheaper later.",
+    "short squeeze":"When a heavily shorted stock rises, short sellers are forced to buy back, which pushes the price up even more.",
+    "fed":"The Federal Reserve: the US central bank. It sets the main interest rate and tries to keep prices stable and jobs plentiful.",
+    "federal reserve":"The US central bank. It sets the main interest rate and tries to keep prices stable and jobs plentiful.",
+    "fomc":"Federal Open Market Committee: the Fed group that votes on interest rates about eight times a year.",
+    "federal funds rate":"The interest rate banks charge each other overnight. It guides most other interest rates in the economy.",
+    "interest rate":"The cost of borrowing money, shown as a yearly percentage. Higher rates usually slow spending and can pull stock prices down.",
+    "rate cut":"When the central bank lowers interest rates. Borrowing gets cheaper, which often helps stocks.",
+    "rate hike":"When the central bank raises interest rates. Borrowing gets costlier, which often hurts stocks.",
+    "basis point":"One hundredth of one percent (0.01%). 25 basis points equals 0.25%.",
+    "bps":"Basis points. One basis point is 0.01%, so 25 bps equals 0.25%.",
+    "inflation":"How fast prices for everyday things rise over time.",
+    "cpi":"Consumer Price Index: a monthly measure of how much typical household prices changed. The main inflation number.",
+    "gdp":"Gross domestic product: the total value of everything a country produces. It shows if the economy is growing.",
+    "recession":"A broad slowdown in the economy, with falling spending, output and jobs, lasting months.",
+    "treasury":"A loan to the US government. Treasuries are seen as very safe, so their yields guide many other rates.",
+    "yield":"The yearly return you earn on a bond or investment, as a percentage of its price. When a bond's price falls, its yield rises.",
+    "bond":"A loan you give to a government or company. They pay you interest and return your money at the end.",
+    "10-year yield":"The interest rate on 10-year US government bonds. It is a key benchmark for mortgages and company borrowing.",
+    "commodity":"A raw material that is bought and sold, like oil, gold or wheat.",
+    "wti":"West Texas Intermediate: the main US oil price benchmark.",
+    "brent":"The main global oil price benchmark.",
+    "opec":"Organization of the Petroleum Exporting Countries: a group of oil-producing nations that coordinate how much oil they sell.",
+    "barrel":"The standard unit for oil: 42 US gallons.",
+    "hedge fund":"A private investment fund for wealthy investors that uses advanced strategies, often including shorting.",
+    "institutional investor":"A large organization such as a pension fund or insurer that invests huge sums.",
+    "liquidity":"How easily something can be bought or sold without moving its price much.",
+    "volume":"How many shares changed hands in a period. High volume means strong interest.",
+    "pre-market":"Trading that happens before the regular market opens at 9:30 a.m. Eastern.",
+    "after-hours":"Trading that happens after the regular market closes at 4 p.m. Eastern.",
+    "options":"Contracts that give the right, but not the obligation, to buy or sell a stock at a set price before a set date.",
+    "call option":"A contract giving the right to buy a stock at a set price before a set date. It gains value if the stock rises.",
+    "put option":"A contract giving the right to sell a stock at a set price before a set date. It gains value if the stock falls.",
+    "downgrade":"An analyst lowers a company's rating, such as from buy to hold. It often pushes the price down.",
+    "upgrade":"An analyst raises a company's rating, such as from hold to buy. It often pushes the price up.",
+    "price target":"An analyst's estimate of where a stock's price will be in about a year.",
+    "analyst":"A professional who studies companies and gives ratings and price estimates.",
+    "sec":"Securities and Exchange Commission: the US regulator of stock markets. Companies file official reports with it.",
+    "8-k":"A form public companies file with the SEC to announce important events quickly, such as results or deals.",
+    "10-k":"A company's detailed yearly report filed with the SEC.",
+    "10-q":"A company's detailed quarterly report filed with the SEC.",
+    "tariff":"A tax on imported goods.",
+    "supply chain":"The network of suppliers and factories that make and deliver a product.",
+    "hyperscaler":"A giant cloud company, such as Amazon, Microsoft or Google, that runs huge data centers.",
+    "data center":"A building full of computers that store data and run online services and artificial intelligence (AI).",
+    "ai":"Artificial intelligence: software that learns patterns to do tasks like writing or recognizing images.",
+    "gpu":"Graphics processing unit: a chip that does many calculations at once. It is the main chip for training artificial intelligence.",
+    "hbm":"High-bandwidth memory: very fast memory stacked next to AI chips.",
+    "dram":"Dynamic random-access memory: the main working memory in computers and phones.",
+    "capex":"Capital expenditure: money a company spends on long-lasting things like factories and equipment.",
+    "capital expenditure":"Money a company spends on long-lasting things like factories and equipment.",
+    "margin":"The share of sales a company keeps as profit. A 20% margin means 20 cents of profit per dollar of sales.",
+    "gross margin":"Sales minus the direct cost of making the product, shown as a percent of sales.",
+    "backlog":"Orders a company has already received but not yet delivered. A big backlog means future sales are likely.",
+    "consensus":"The average forecast of analysts. Results are judged by whether they beat or miss it.",
+    "beat":"A company reported better results than analysts expected.",
+    "miss":"A company reported worse results than analysts expected.",
+    "rally":"A strong rise in prices over a short time.",
+    "selloff":"A sharp drop in prices because many people sell at once.",
+    "correction":"A fall of about 10% to 20% from a recent high.",
+    "all-time high":"The highest price ever reached.",
+    "watchlist":"A list of stocks you want to keep an eye on without owning them."
+  };
+  function normTerm(t){ return String(t||'').toLowerCase().replace(/[“”"'.,;:()!?]/g,'').replace(/\s+/g,' ').trim(); }
+  function buildGloss(){
+    var g={}; Object.keys(GLOSS).forEach(function(k){ g[k]=GLOSS[k]; });
+    if(DATA&&DATA.stories) DATA.stories.forEach(function(s){ (s.terms||[]).forEach(function(p){ g[normTerm(p[0])]=p[1]; }); });
+    return g;
+  }
+  function lookup(sel){
+    var g=buildGloss(), k=normTerm(sel);
+    if(g[k]) return {term:sel,def:g[k]};
+    if(k.length>3 && k.slice(-1)==='s' && g[k.slice(0,-1)]) return {term:sel,def:g[k.slice(0,-1)]};
+    return null;
+  }
+  var popEl=null;
+  function closePop(){ if(popEl){ popEl.remove(); popEl=null; } }
+  function openPop(x,y,sel){
+    closePop();
+    var hit=lookup(sel);
+    var ask='In plain simple English, explain "'+sel+'" in the context of the stock market and finance. Spell out any abbreviations and give one everyday example.';
+    var h='<div class="xp-h"><b>'+esc(sel.length>60?sel.slice(0,60)+'…':sel)+'</b><button type="button" class="xp-x" aria-label="Close">×</button></div>';
+    h+= hit ? '<p>'+esc(hit.def)+'</p>' : '<p class="xp-na">No built-in explanation for this one yet.</p>';
+    h+='<div class="xp-l"><a target="_blank" rel="noopener noreferrer" href="https://claude.ai/new?q='+encodeURIComponent(ask)+'">Ask Claude</a>'
+      +'<a target="_blank" rel="noopener noreferrer" href="https://www.investopedia.com/search?q='+encodeURIComponent(sel)+'">Investopedia</a></div>';
+    popEl=document.createElement('div'); popEl.className='xp'; popEl.setAttribute('role','dialog'); popEl.innerHTML=h;
+    document.body.appendChild(popEl);
+    var w=popEl.offsetWidth, ht=popEl.offsetHeight, vw=document.documentElement.clientWidth, vh=window.innerHeight;
+    popEl.style.left=Math.max(8,Math.min(x,vw-w-8))+'px';
+    popEl.style.top=Math.max(8,Math.min(y,vh-ht-8))+'px';
+  }
+  document.addEventListener('contextmenu',function(e){
+    var t=window.getSelection?String(window.getSelection()):'';
+    t=t.replace(/\s+/g,' ').trim();
+    if(!t||t.length>120||e.target.closest('input,textarea,.xp')) return;
+    e.preventDefault(); openPop(e.clientX,e.clientY,t);
+  });
+  document.addEventListener('mousedown',function(e){ if(popEl&&!e.target.closest('.xp')) closePop(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closePop(); });
+  document.addEventListener('scroll',closePop,true);
+  document.addEventListener('click',function(e){ if(e.target.closest('.xp-x')) closePop(); });
 
   /* ---------- boot ---------- */
   function paint(){
