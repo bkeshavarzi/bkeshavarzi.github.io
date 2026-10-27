@@ -300,7 +300,8 @@
           "title": "Stock market today: Dow, S&P 500, Nasdaq rise as tech gains for second day (Yahoo Finance)",
           "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-october-27-dow-sp-500-nasdaq-tech-sector-160557664.html"
         }
-      ]
+      ],
+      "added": "Oct 27, 5:55 p.m. ET"
     },
     {
       "id": "tuesday-movers",
@@ -376,7 +377,8 @@
           "title": "Stock market today: Dow, S&P 500, Nasdaq rise as tech gains for second day (Yahoo Finance)",
           "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-october-27-dow-sp-500-nasdaq-tech-sector-160557664.html"
         }
-      ]
+      ],
+      "added": "Oct 27, 5:55 p.m. ET"
     },
     {
       "id": "memory-chips",
@@ -455,7 +457,8 @@
           "title": "Anthropic files confidentially for IPO (Fox Business)",
           "url": "https://foxbusiness.com/markets/anthropic-files-confidentially-ipo"
         }
-      ]
+      ],
+      "added": "Oct 27, 12:25 p.m. ET"
     },
     {
       "id": "celestica",
@@ -524,7 +527,8 @@
           "title": "Celestica on Yahoo Finance (live page)",
           "url": "https://finance.yahoo.com/quote/CLS/"
         }
-      ]
+      ],
+      "added": "Oct 27, 12:25 p.m. ET"
     },
     {
       "id": "meta-offering",
@@ -594,7 +598,9 @@
           "title": "Wall Street ends higher on revived AI momentum (MarketScreener)",
           "url": "https://www.marketscreener.com/news/wall-street-ends-higher-on-revived-ai-momentum-ce785cddde81f423"
         }
-      ]
+      ],
+      "added": "Oct 27, 12:25 p.m. ET",
+      "updated": "Oct 27, 5:55 p.m. ET"
     },
     {
       "id": "fed-meeting",
@@ -653,7 +659,9 @@
           "title": "Stock market today: Dow, S&P 500, Nasdaq rise as tech gains for second day (Yahoo Finance)",
           "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-october-27-dow-sp-500-nasdaq-tech-sector-160557664.html"
         }
-      ]
+      ],
+      "added": "Oct 27, 12:25 p.m. ET",
+      "updated": "Oct 27, 5:55 p.m. ET"
     },
     {
       "id": "oil",
@@ -738,7 +746,9 @@
           "title": "Wall Street ends higher on revived AI momentum (MarketScreener)",
           "url": "https://www.marketscreener.com/news/wall-street-ends-higher-on-revived-ai-momentum-ce785cddde81f423"
         }
-      ]
+      ],
+      "added": "Oct 27, 12:25 p.m. ET",
+      "updated": "Oct 27, 5:55 p.m. ET"
     },
     {
       "id": "monday-recap",
@@ -825,7 +835,8 @@
           "title": "Verizon on Yahoo Finance (live page)",
           "url": "https://finance.yahoo.com/quote/VZ/"
         }
-      ]
+      ],
+      "added": "Oct 27, 12:25 p.m. ET"
     },
     {
       "id": "ringcentral",
@@ -880,7 +891,8 @@
           "title": "RingCentral on Yahoo Finance (live page)",
           "url": "https://finance.yahoo.com/quote/RNG/"
         }
-      ]
+      ],
+      "added": "Oct 27, 12:25 p.m. ET"
     },
     {
       "id": "spacex-towers",
@@ -955,7 +967,8 @@
           "title": "Crown Castle on Yahoo Finance (live page)",
           "url": "https://finance.yahoo.com/quote/CCI/"
         }
-      ]
+      ],
+      "added": "Oct 27, 12:25 p.m. ET"
     },
     {
       "id": "moderna",
@@ -1010,7 +1023,8 @@
           "title": "Moderna on Yahoo Finance (live page)",
           "url": "https://finance.yahoo.com/quote/MRNA/"
         }
-      ]
+      ],
+      "added": "Oct 27, 12:25 p.m. ET"
     }
   ]
 }

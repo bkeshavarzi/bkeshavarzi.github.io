@@ -9,7 +9,7 @@ Return ONLY the complete new data.json as JSON, same schema as the current one b
 Rules: simple English; spell out abbreviations; 5-8 stories, new ones section "today", still-useful older ones section "earlier", drop anything older than 5 days;
 every story needs news, history, says, impact, terms, optional chart, and at least one real source URL you actually saw in search results (never invent URLs);
 only use numbers you found; price/changePct null when unknown; no investment advice; confidence Confirmed/Likely/Unexplained;
-set updatedAt (ISO) and updatedLabel like "Tue, Oct 27 · 12:25 p.m. ET"; keep quotes for every ticker in keyStocks.
+every story needs an "added" field (e.g. "Oct 27, 5:55 p.m. ET", the time you add it; keep the old value for kept stories) and an "updated" field when you change it; set updatedAt (ISO) and updatedLabel like "Tue, Oct 27 · 12:25 p.m. ET"; keep quotes for every ticker in keyStocks.
 CURRENT data.json:
 {json.dumps(d)}"""
 c = anthropic.Anthropic()
