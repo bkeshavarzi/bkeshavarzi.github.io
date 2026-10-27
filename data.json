@@ -1,38 +1,38 @@
 {
-  "updatedAt": "2026-10-27T12:25:00-04:00",
-  "updatedLabel": "Tue, Oct 27 · 12:25 p.m. ET",
+  "updatedAt": "2026-10-27T17:55:00-04:00",
+  "updatedLabel": "Tue, Oct 27 · 5:55 p.m. ET",
   "refreshNote": "Refreshed every 3 to 4 hours",
   "disclaimer": "These notes are for learning. They are research ideas, not financial advice.",
   "markets": [
     {
       "name": "S&P 500",
-      "value": "7,676.77",
-      "changePct": 0.7,
-      "asOf": "Mon close"
+      "value": "7,722.60",
+      "changePct": 0.6,
+      "asOf": "Tue close"
     },
     {
       "name": "Dow Jones",
-      "value": "52,361.58",
-      "changePct": 0.28,
-      "asOf": "Mon close"
+      "value": "52,377.57",
+      "changePct": 0.03,
+      "asOf": "Tue close"
     },
     {
       "name": "Nasdaq Composite",
-      "value": "26,169.38",
-      "changePct": 0.82,
-      "asOf": "Mon close"
+      "value": "26,477.81",
+      "changePct": 1.18,
+      "asOf": "Tue close"
     },
     {
-      "name": "Oil (WTI), $ a barrel",
-      "value": "103.23",
-      "changePct": 3.8,
-      "asOf": "Fri close"
+      "name": "Crude oil (Dec), $ a barrel",
+      "value": "100.20",
+      "changePct": -1.53,
+      "asOf": "Tue"
     },
     {
       "name": "10-year Treasury yield",
-      "value": "5.00%",
+      "value": "4.99%",
       "changePct": null,
-      "asOf": "Fri close"
+      "asOf": "Tue"
     }
   ],
   "quotes": {
@@ -57,8 +57,8 @@
     "META": {
       "name": "Meta Platforms",
       "price": null,
-      "changePct": -1.88,
-      "asOf": "Mon close"
+      "changePct": -1.6,
+      "asOf": "Tue close"
     },
     "AMD": {
       "name": "Advanced Micro Devices",
@@ -167,6 +167,42 @@
       "price": null,
       "changePct": null,
       "asOf": ""
+    },
+    "BA": {
+      "name": "Boeing",
+      "price": null,
+      "changePct": -10.7,
+      "asOf": "Tue close"
+    },
+    "UPS": {
+      "name": "UPS",
+      "price": null,
+      "changePct": 5.8,
+      "asOf": "Tue close"
+    },
+    "SOFI": {
+      "name": "SoFi Technologies",
+      "price": null,
+      "changePct": 13.42,
+      "asOf": "Tue close"
+    },
+    "XYL": {
+      "name": "Xylem",
+      "price": null,
+      "changePct": -14.2,
+      "asOf": "Tue close"
+    },
+    "RCL": {
+      "name": "Royal Caribbean",
+      "price": null,
+      "changePct": 5.5,
+      "asOf": "Tue close"
+    },
+    "SHW": {
+      "name": "Sherwin-Williams",
+      "price": null,
+      "changePct": -2.7,
+      "asOf": "Tue close"
     }
   },
   "keyStocks": [
@@ -182,10 +218,6 @@
   ],
   "week": [
     {
-      "when": "Tue, Oct 27 (today)",
-      "what": "Fed meeting, day 1. After the close: Visa, Robinhood, Seagate, NXP Semiconductors and Teradyne report earnings."
-    },
-    {
       "when": "Wed, Oct 28",
       "what": "Federal Reserve interest-rate decision and press conference. Alphabet and Microsoft report earnings after the close."
     },
@@ -194,18 +226,161 @@
       "what": "Amazon reports earnings."
     },
     {
-      "when": "November",
-      "what": "Acumen Pharmaceuticals shares are up 6.6% before the open today, ahead of its Alzheimer's trial results due in November."
+      "when": "Coming weeks",
+      "what": "Anthropic's initial public offering (IPO) is the topic driving AI stocks. Its prospectus was reported public on Monday."
     }
   ],
   "lesson": {
-    "title": "Lesson of the day: read the outlook first",
-    "body": "Celestica fell 5% on Monday and then jumped about 17% before the open today. The reason was its outlook, not the past quarter. A company's own forecast is called guidance, and a share price is a bet on the future. When the forecast beats what analysts expected, the stock can jump even if nothing else changed."
+    "title": "Lesson of the day: good news can still send a stock down",
+    "body": "Coca-Cola beat analyst estimates and raised its profit outlook, yet its stock fell about 1.6% because demand in North America slowed. JetBlue reported a bigger loss than expected, yet its stock rose because demand stayed strong. Prices move on how results compare with what investors expected, and on what they say about the future, not on whether the news sounds good."
   },
   "stories": [
     {
-      "id": "memory-chips",
+      "id": "tuesday-close",
       "section": "today",
+      "tag": "Markets",
+      "time": "Tue Oct 27 close",
+      "confidence": "Confirmed",
+      "headline": "Chip stocks lead a rally: the Nasdaq rises 1.18% while the Dow barely moves",
+      "news": "US stocks ended higher on Tuesday. The S&P 500 rose 0.60% to 7,722.60 and the Nasdaq Composite rose 1.18% to 26,477.81. The Dow Jones Industrial Average gained only 0.03%, to 52,377.57. Chip stocks rose for a third straight session. Reports say the buzz around Anthropic's upcoming IPO helped, and an analyst said AI stocks were due for a bounce after recent losses. Technology led the gains, and energy fell the most.",
+      "history": "These three numbers are indexes, scores that track groups of stocks. The Nasdaq holds many technology companies, so it moves more when tech moves. The Dow holds only 30 large companies, so it can sit still while tech jumps. The Philadelphia semiconductor index (a chip-stock index) is up 62.1% this year, versus 12.8% for the S&P 500, but it is still more than 20% below its June 22 record.",
+      "says": "The gap between the Nasdaq (+1.18%) and the Dow (+0.03%) shows that the gain came from a narrow group, mostly chip and AI companies. Energy stocks fell because crude oil eased on hopes for Middle East peace talks. Advancing stocks beat declining stocks by about 1.8 to 1 on both big exchanges, so the rise was fairly broad, not just a few names.",
+      "impact": "On Wednesday the Federal Reserve announces its interest-rate decision, and Alphabet and Microsoft report earnings after the close. Both can move AI stocks quickly in either direction. Trading volume was below its recent average, which means fewer people took part in the rally, and moves on lower volume can fade.",
+      "terms": [
+        [
+          "Index",
+          "A score that tracks a group of stocks, used to show how the market is doing."
+        ],
+        [
+          "Breadth",
+          "How many stocks rose compared with how many fell. Wide breadth means many stocks joined the move."
+        ],
+        [
+          "Volume",
+          "How many shares were traded. Low volume means fewer people took part."
+        ],
+        [
+          "Initial public offering (IPO)",
+          "The first time a private company sells shares to the public."
+        ]
+      ],
+      "chart": {
+        "type": "bars",
+        "title": "Tuesday close: percent change",
+        "items": [
+          {
+            "label": "Russell 2000 (small companies)",
+            "value": 1.16
+          },
+          {
+            "label": "Nasdaq Composite",
+            "value": 1.18
+          },
+          {
+            "label": "S&P 500",
+            "value": 0.6
+          },
+          {
+            "label": "Dow Jones",
+            "value": 0.03
+          }
+        ],
+        "signed": true,
+        "decimals": 2,
+        "suffix": "%",
+        "toneBySign": true,
+        "note": "Sources: MarketScreener and Yahoo Finance, Oct 27 close."
+      },
+      "sources": [
+        {
+          "title": "Wall Street ends higher on revived AI momentum (MarketScreener)",
+          "url": "https://www.marketscreener.com/news/wall-street-ends-higher-on-revived-ai-momentum-ce785cddde81f423"
+        },
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq rise as tech gains for second day (Yahoo Finance)",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-october-27-dow-sp-500-nasdaq-tech-sector-160557664.html"
+        }
+      ]
+    },
+    {
+      "id": "tuesday-movers",
+      "section": "today",
+      "tag": "Earnings",
+      "time": "Tue Oct 27 close",
+      "confidence": "Confirmed",
+      "headline": "Earnings reactions: Boeing and Xylem fall hard, while UPS and SoFi jump",
+      "news": "Boeing fell 10.7% after a bigger-than-expected third-quarter loss. Xylem fell 14.2% after trimming its full-year forecast. Sherwin-Williams fell 2.7% on a profit miss. On the other side, UPS rose 5.8% after raising its yearly sales and profit forecasts, Royal Caribbean rose 5.5% after lifting its profit forecast, and SoFi gained 13.42% on better results and higher guidance. Meta fell 1.6% after raising its record stock sale to $97.5 billion.",
+      "history": "Each quarter, companies report earnings (profit) and often update guidance, their own forecast. Roughly half of S&P 500 companies have now reported third-quarter results, and 83% of them beat analyst expectations, according to LSEG, a financial data firm.",
+      "says": "Look at what drove each move. Xylem and UPS moved on their forecasts for the rest of the year, not on the quarter just finished. Boeing and Sherwin-Williams moved on bad results. Even a company that beats estimates can fall if investors hoped for more, as the Coca-Cola example in today's lesson shows.",
+      "impact": "Alphabet, Microsoft and Amazon report this week. They are very large, so their AI-spending numbers can move the whole market, not only their own stocks. Big one-day drops like Boeing's also show how much risk sits in single stocks compared with an index that holds hundreds.",
+      "terms": [
+        [
+          "Guidance",
+          "A company's own forecast for its future sales or profit."
+        ],
+        [
+          "Earnings",
+          "The profit a company reports for a period, usually a three-month quarter."
+        ],
+        [
+          "Beat / miss",
+          "Results better or worse than analysts expected."
+        ]
+      ],
+      "chart": {
+        "type": "bars",
+        "title": "Tuesday close: percent change",
+        "items": [
+          {
+            "label": "SoFi",
+            "value": 13.42
+          },
+          {
+            "label": "UPS",
+            "value": 5.8
+          },
+          {
+            "label": "Royal Caribbean",
+            "value": 5.5
+          },
+          {
+            "label": "Sherwin-Williams",
+            "value": -2.7
+          },
+          {
+            "label": "Meta",
+            "value": -1.6
+          },
+          {
+            "label": "Boeing",
+            "value": -10.7
+          },
+          {
+            "label": "Xylem",
+            "value": -14.2
+          }
+        ],
+        "signed": true,
+        "decimals": 2,
+        "suffix": "%",
+        "toneBySign": true,
+        "trimZeros": true,
+        "note": "Sources: MarketScreener (all except SoFi) and Yahoo Finance (SoFi), Oct 27 close."
+      },
+      "sources": [
+        {
+          "title": "Wall Street ends higher on revived AI momentum (MarketScreener)",
+          "url": "https://www.marketscreener.com/news/wall-street-ends-higher-on-revived-ai-momentum-ce785cddde81f423"
+        },
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq rise as tech gains for second day (Yahoo Finance)",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-october-27-dow-sp-500-nasdaq-tech-sector-160557664.html"
+        }
+      ]
+    },
+    {
+      "id": "memory-chips",
+      "section": "earlier",
       "tag": "AI and chips",
       "time": "Tue, before the open",
       "confidence": "Likely",
@@ -284,7 +459,7 @@
     },
     {
       "id": "celestica",
-      "section": "today",
+      "section": "earlier",
       "tag": "Earnings",
       "time": "Tue, before the open",
       "confidence": "Confirmed",
@@ -355,10 +530,10 @@
       "id": "meta-offering",
       "section": "today",
       "tag": "Big Tech",
-      "time": "Tue, before the open",
+      "time": "Tue Oct 27 close",
       "confidence": "Confirmed",
       "headline": "Meta's stock sale grows to $97.5 billion, and Nvidia will put in $3 billion",
-      "news": "Nvidia will invest $3 billion in Meta's enlarged stock offering of $97.5 billion, according to this morning's briefing. Meta shares were down about 0.36% before the open, after falling 1.88% on Monday.",
+      "news": "Meta raised its record stock sale to $97.5 billion, and Nvidia agreed to invest $3 billion in it. Meta shares fell about 1.6% on Tuesday, after falling 1.88% on Monday.",
       "history": "On October 20, the talk was of an offering of up to $30 billion. Meta has spent heavily on AI buildings and chips. It planned $130 to $145 billion of capital spending for 2026, and its free cash flow in the second quarter was $784 million, down from $8.55 billion a year earlier. Alphabet, Google's parent company, raised about $84.75 billion by selling shares in June.",
       "says": "An equity offering means a company sells new shares to raise cash. Meta chose shares over borrowing more money, and this sale is more than three times the amount analysts were discussing last week.",
       "impact": "Selling more shares means each existing share owns a smaller slice of the company, called dilution, which can push the price down. On the other side, Meta avoids more debt and gets cash for its AI plans. Nvidia sells chips to Meta and is now also buying Meta shares, an arrangement some investors will watch closely. Alphabet, Microsoft and Amazon report earnings this week, so more detail on AI spending is coming.",
@@ -414,6 +589,10 @@
         {
           "title": "Meta Platforms on Yahoo Finance (live page)",
           "url": "https://finance.yahoo.com/quote/META/"
+        },
+        {
+          "title": "Wall Street ends higher on revived AI momentum (MarketScreener)",
+          "url": "https://www.marketscreener.com/news/wall-street-ends-higher-on-revived-ai-momentum-ce785cddde81f423"
         }
       ]
     },
@@ -424,7 +603,7 @@
       "time": "Tue, decision Wed",
       "confidence": "Confirmed",
       "headline": "The Federal Reserve starts a two-day meeting; the decision comes Wednesday",
-      "news": "The Federal Reserve (the Fed) begins a two-day meeting today and announces its decision on Wednesday, October 28. Markets widely expect it to leave its main interest rate unchanged at 3.75% to 4.00%. With oil above $100 a barrel, the press conference after the decision may matter as much as the decision itself.",
+      "news": "The Federal Reserve (the Fed) began a two-day meeting on Tuesday and announces its decision on Wednesday, October 28. Markets widely expect it to leave its main interest rate unchanged at 3.75% to 4.00%. CME Group pricing showed about a 10% chance of a rate hike. With oil near $100 a barrel, the press conference after the decision may matter as much as the decision itself.",
       "history": "The Fed sets a target for the interest rate that banks charge each other for overnight loans. That rate influences loans, credit cards and savings accounts. The Fed raised it sharply in 2022 and 2023 to slow high inflation, which means prices rising too fast. It uses higher rates to cool prices and lower rates to help growth.",
       "says": "Holding means no change this week. The 10-year Treasury yield, the interest rate on US government 10-year bonds, closed at 5.00% on Friday, above the Fed's own range. That tells you investors are asking for more interest to lend money for long periods.",
       "impact": "If the Fed sounds worried about prices because of oil, traders may expect rates to stay high for longer, which usually pressures stocks, especially expensive tech stocks. If it sounds calm, stocks may relax. Alphabet and Microsoft report earnings right after the close on Wednesday, so a lot lands on the same day.",
@@ -469,6 +648,10 @@
         {
           "title": "Federal Reserve RSS feeds and press releases",
           "url": "https://federalreserve.gov/feeds"
+        },
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq rise as tech gains for second day (Yahoo Finance)",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-october-27-dow-sp-500-nasdaq-tech-sector-160557664.html"
         }
       ]
     },
@@ -476,10 +659,10 @@
       "id": "oil",
       "section": "today",
       "tag": "Oil",
-      "time": "Fri Oct 23 close",
+      "time": "Tue Oct 27",
       "confidence": "Confirmed",
-      "headline": "Oil is back above $100 a barrel as US-Iran fears return",
-      "news": "On Friday, October 23, US crude oil, called West Texas Intermediate (WTI), rose 3.8% to $103.23 a barrel on fears of renewed fighting between the US and Iran. Brent crude, the international benchmark, rose 3.1% to $116.72.",
+      "headline": "Oil slips toward $100 a barrel as Middle East peace hopes grow",
+      "news": "On Tuesday, the December crude oil contract fell 1.53% to $100.20 a barrel, and Brent traded below $110, as hopes grew for easing tensions in the Middle East. Energy stocks fell the most in the market, and refiners Valero, Marathon Petroleum and Phillips 66 dropped 7% to 9%. On Friday, October 23, WTI had risen 3.8% to $103.23 on fears of renewed US-Iran fighting.",
       "history": "Oil jumped in March when the US-Iran war began and ships were disrupted in the Strait of Hormuz, a narrow sea route that carries much of the world's oil. WTI reached about $107 in late April, then fell below $70 by June 24 as talks moved forward and tankers sailed again. The sources we have do not cover July to September. Today's price is back near the spring highs.",
       "says": "A conflict near key oil routes makes traders worry that less oil will reach buyers, so prices can rise fast even before any oil is actually lost.",
       "impact": "Higher oil raises gasoline and shipping costs, which can push inflation up and make the Fed less willing to cut rates. Airlines and other big fuel users usually suffer, while oil producers can gain. Prices can also reverse quickly on peace news, as they did in April.",
@@ -546,12 +729,20 @@
         {
           "title": "2026–2028 world oil market chronology (Wikipedia)",
           "url": "https://en.wikipedia.org/wiki/2026%E2%80%932028_world_oil_market_chronology"
+        },
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq rise as tech gains for second day (Yahoo Finance)",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-october-27-dow-sp-500-nasdaq-tech-sector-160557664.html"
+        },
+        {
+          "title": "Wall Street ends higher on revived AI momentum (MarketScreener)",
+          "url": "https://www.marketscreener.com/news/wall-street-ends-higher-on-revived-ai-momentum-ce785cddde81f423"
         }
       ]
     },
     {
       "id": "monday-recap",
-      "section": "today",
+      "section": "earlier",
       "tag": "Market recap",
       "time": "Mon Oct 26 close",
       "confidence": "Confirmed",
