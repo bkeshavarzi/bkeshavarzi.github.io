@@ -347,7 +347,7 @@ details.terms dd{margin:0 0 2px; color:var(--ink-2)}
     var terms = (s.terms&&s.terms.length) ? '<details class="terms"><summary>Words in this story</summary><dl>'+s.terms.map(function(t){return '<dt>'+esc(t[0])+'</dt><dd>'+esc(t[1])+'</dd>';}).join('')+'</dl></details>' : '';
     var src = (s.sources&&s.sources.length) ? '<p class="src">Sources: '+s.sources.map(function(x){return '<a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.title)+'</a>';}).join(' · ')+'</p>' : '';
     return '<article class="story" data-sec="'+esc(s.section)+'" id="'+esc(s.id)+'">'
-      +'<div class="kick"><span class="tag">'+esc(s.tag)+'</span><span class="when">'+esc(s.time)+'</span><span class="conf conf-'+esc(s.confidence)+'">'+esc(s.confidence)+'</span></div>'
+      +'<div class="kick"><span class="tag">'+esc(s.tag)+'</span><span class="when">'+esc(s.time)+'</span><span class="when posted">'+(s.updated?'Updated '+esc(s.updated):(s.added?'Added '+esc(s.added):''))+'</span><span class="conf conf-'+esc(s.confidence)+'">'+esc(s.confidence)+'</span></div>'
       +'<h2>'+esc(s.headline)+'</h2>'
       +'<p class="news">'+esc(s.news)+'</p>'
       +'<div class="explain"><h3>In simple words</h3><dl>'
